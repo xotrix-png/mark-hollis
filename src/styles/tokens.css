@@ -6,12 +6,13 @@
   --color-warm-grey: #b5aea1;
   --color-taupe: #a28b70;
 
-  /* Layout — desktop editorial frame */
+  /* Layout — desktop editorial frame (Hero + Philosophy share these) */
   --margin-inline: clamp(2.5rem, 5.2vw, 6.25rem); /* ~40–100px */
   --max-width: 111.25rem; /* 1780px */
   --grid-columns: 12;
   --grid-gutter: 0;
   --rule-color: rgb(41 43 39 / 0.14);
+  --shell-pad-block: clamp(1.35rem, 2vw, 1.85rem);
 
   /* Spacing */
   --space-2xs: 0.25rem;

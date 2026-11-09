@@ -63,14 +63,16 @@ export default function Philosophy() {
           </div>
         </div>
 
-        <figure className="philosophy__moss">
-          <img
-            src="/images/philosophy-moss.png"
-            alt="Close study of moss on granite stone"
-            width={1024}
-            height={1024}
-          />
-        </figure>
+        <footer className="philosophy__foot">
+          <figure className="philosophy__moss">
+            <img
+              src="/images/philosophy-moss.png"
+              alt="Close study of moss on granite stone"
+              width={1024}
+              height={1024}
+            />
+          </figure>
+        </footer>
       </div>
     </section>
   )

@@ -40,8 +40,6 @@
 }
 
 .hero__shell {
-  --shell-pad-block: clamp(1.35rem, 2vw, 1.85rem);
-
   position: relative;
   z-index: 1;
   display: grid;
