@@ -239,7 +239,7 @@
 
 .approach__stage-btn {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   column-gap: clamp(1rem, 2vw, 1.75rem);
   width: 100%;
