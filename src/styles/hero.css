@@ -367,10 +367,10 @@
   border-radius: 0;
 }
 
-/* ~100px right of the thumb’s grid rule; same baseline as coords */
+/* Flush left to nearest grid rule on its right (rule i=2 / col-3 start) */
 .hero__project {
   position: absolute;
-  left: calc(var(--detail-w) - var(--side-gap) + 100px);
+  left: calc(var(--margin-inline) + 2 * var(--col));
   bottom: var(--shell-pad-block);
   z-index: 2;
   margin: 0;
