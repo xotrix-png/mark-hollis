@@ -23,7 +23,7 @@ export default function About() {
 
       <div className="about__shell">
         <header className="about__bar">
-          <p className="about__kicker">04 / About</p>
+          <p className="about__kicker">03 / About</p>
         </header>
 
         <div className="about__stage">
