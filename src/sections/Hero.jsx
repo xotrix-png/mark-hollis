@@ -85,7 +85,7 @@ export default function Hero() {
             />
           </figure>
           <p className="hero__project">01 / 06 — Private Residence</p>
-          <p className="hero__coords">(01) N 53°54′ E 27°34′</p>
+          <p className="hero__coords">(01) N 42°15′ W 73°47′</p>
         </footer>
       </div>
     </section>

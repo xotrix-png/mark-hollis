@@ -10,14 +10,14 @@ export default function HeroNav() {
         </p>
       </div>
 
-      <p className="hero-nav__locale">©2026 — Minsk Region</p>
+      <p className="hero-nav__locale">©2026 — Hudson Valley, NY</p>
 
       <nav className="hero-nav__links" aria-label="Primary">
         <a href="#work">Work</a>
         <span aria-hidden="true">,</span>
         <a href="#about">About</a>
         <span aria-hidden="true">,</span>
-        <a href="#approach">Approach</a>
+        <a href="#philosophy">Approach</a>
         <span aria-hidden="true">,</span>
         <a href="#contact">Contact</a>
       </nav>

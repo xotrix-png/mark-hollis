@@ -1,0 +1,275 @@
+.philosophy {
+  --shell-w: min(100vw, var(--max-width));
+  --side-gap: calc((100vw - var(--shell-w)) / 2);
+  --content-w: calc(var(--shell-w) - 2 * var(--margin-inline));
+  --col: calc(var(--content-w) / 12);
+
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--color-ivory);
+  color: var(--color-graphite);
+  overflow: clip;
+}
+
+.philosophy__rules {
+  position: absolute;
+  inset-block: 0;
+  left: 50%;
+  z-index: 0;
+  width: min(100%, var(--max-width));
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.philosophy__rule {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(
+    var(--margin-inline) +
+      (100% - 2 * var(--margin-inline)) * var(--i) / 12
+  );
+  width: 1px;
+  margin-left: -0.5px;
+  background-color: var(--rule-color);
+}
+
+.philosophy__shell {
+  --shell-pad-block: clamp(1.35rem, 2vw, 1.85rem);
+
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  width: min(100%, var(--max-width));
+  min-height: inherit;
+  margin-inline: auto;
+  padding-inline: var(--margin-inline);
+  padding-block: var(--shell-pad-block);
+}
+
+/* ——— Top meta ——— */
+.philosophy__bar {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: baseline;
+  opacity: 0;
+  transform: translateY(-0.3rem);
+  transition:
+    opacity var(--duration-load) var(--ease-out),
+    transform var(--duration-load) var(--ease-out);
+}
+
+.philosophy.is-ready .philosophy__bar {
+  opacity: 1;
+  transform: none;
+}
+
+.philosophy__kicker {
+  grid-column: 1 / span 4;
+  margin: 0;
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--color-graphite);
+}
+
+.philosophy__coords {
+  grid-column: 8 / span 5;
+  justify-self: end;
+  margin: 0;
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  line-height: 1;
+  color: rgb(41 43 39 / 0.7);
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* ——— Stage ——— */
+.philosophy__stage {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: start;
+  column-gap: 0;
+  margin-top: clamp(2.25rem, 5vh, 3.5rem);
+  margin-bottom: clamp(2rem, 4vh, 3rem);
+  opacity: 0;
+  transform: translateY(0.65rem);
+  transition:
+    opacity var(--duration-load) var(--ease-out) 80ms,
+    transform var(--duration-load) var(--ease-out) 80ms;
+}
+
+.philosophy.is-ready .philosophy__stage {
+  opacity: 1;
+  transform: none;
+}
+
+.philosophy__study {
+  grid-column: 1 / span 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 0;
+  min-width: 0;
+}
+
+.philosophy__study-frame {
+  width: 100%;
+  aspect-ratio: 3 / 5;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.philosophy__study-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% 42%;
+  border-radius: 0;
+}
+
+.philosophy__caption {
+  margin: 0;
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  line-height: 1.35;
+  color: var(--color-graphite);
+}
+
+.philosophy__copy {
+  grid-column: 5 / span 8;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.75rem, 3.5vh, 2.75rem);
+  min-width: 0;
+  padding-top: clamp(0.5rem, 1.5vh, 1.25rem);
+}
+
+.philosophy__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 500;
+  line-height: var(--lh-h2);
+  letter-spacing: -0.015em;
+  color: var(--color-graphite);
+}
+
+.philosophy__title > span {
+  display: block;
+  white-space: nowrap;
+}
+
+/* Line 1 starts ~1 col in (visual col 6); line 2 flush to copy start (col 5) */
+.philosophy__title > span:first-child {
+  margin-left: calc(100% * 1 / 8);
+}
+
+.philosophy__title-line2 {
+  margin-left: 0;
+}
+
+.philosophy__garden {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-olive);
+}
+
+.philosophy__aside {
+  /* Visual start ~col 8 within copy that begins at col 5 */
+  margin-left: calc(100% * 3 / 8);
+  max-width: 26.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.philosophy__desc {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-desc);
+  font-weight: 500;
+  line-height: var(--lh-desc);
+  color: var(--color-graphite);
+}
+
+.philosophy__rule-line {
+  width: 100%;
+  height: 0;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid rgb(41 43 39 / 0.55);
+}
+
+.philosophy__meta-line {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta-line);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+/* ——— Moss thumb: bottom-right, flush to last content rule ——— */
+.philosophy__moss {
+  position: absolute;
+  right: var(--margin-inline);
+  bottom: var(--shell-pad-block);
+  z-index: 2;
+  width: calc(var(--col) * 1.85);
+  aspect-ratio: 1 / 1;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0;
+  opacity: 0;
+  transform: translateY(0.35rem);
+  transition:
+    opacity var(--duration-load) var(--ease-out) 160ms,
+    transform var(--duration-load) var(--ease-out) 160ms;
+}
+
+.philosophy.is-ready .philosophy__moss {
+  opacity: 1;
+  transform: none;
+}
+
+.philosophy__moss img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 45%;
+  border-radius: 0;
+}
+
+@media (max-width: 1280px) {
+  .philosophy__title {
+    font-size: clamp(2.75rem, 4.2vw, 3.85rem);
+  }
+
+  .philosophy__aside {
+    max-width: 24rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .philosophy__bar,
+  .philosophy__stage,
+  .philosophy__moss {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
