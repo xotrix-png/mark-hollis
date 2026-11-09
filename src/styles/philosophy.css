@@ -3,10 +3,11 @@
   --side-gap: calc((100vw - var(--shell-w)) / 2);
   --content-w: calc(var(--shell-w) - 2 * var(--margin-inline));
   --col: calc(var(--content-w) / 12);
-  /* Body/hairline column: visual cols 8–11 (4 cols), capped like .philosophy__aside */
+  /* Body/hairline: rules 7→11 (4 cols). Moss: rules 9→11 (2 cols). Exact grid, no float. */
   --body-left: calc(var(--margin-inline) + 7 * var(--col));
-  --body-width: min(calc(4 * var(--col)), 32rem);
-  --moss-size: calc(var(--col) * 2);
+  --body-width: calc(4 * var(--col));
+  --moss-left: calc(var(--margin-inline) + 9 * var(--col));
+  --moss-size: calc(2 * var(--col));
 
   position: relative;
   isolation: isolate;
@@ -177,10 +178,10 @@
 }
 
 .philosophy__aside {
-  /* Visual start ~col 8 within copy that begins at col 5 */
+  /* Visual start ~col 8 within copy that begins at col 5; width exactly 4 cols → rule 11 */
   margin-left: calc(100% * 3 / 8);
   width: var(--body-width);
-  max-width: 32rem;
+  max-width: none;
   display: flex;
   flex-direction: column;
   gap: 0.9rem;
@@ -215,12 +216,12 @@
 }
 
 /*
-  Moss: right edge flush with body/hairline column right
-  (same block as desc + OBSERVE rule).
+  Moss: left+right on vertical grid rules 9 and 11 (exact 2 cols).
+  Hairline ends on the same right rule via --body-width.
 */
 .philosophy__moss {
   position: absolute;
-  left: calc(var(--body-left) + var(--body-width) - var(--moss-size));
+  left: var(--moss-left);
   right: auto;
   bottom: var(--shell-pad-block);
   z-index: 2;
@@ -252,10 +253,6 @@
 @media (max-width: 1280px) {
   .philosophy__title {
     font-size: clamp(3.15rem, 4.6vw, 4.35rem);
-  }
-
-  .philosophy__aside {
-    max-width: 28rem;
   }
 }
 
