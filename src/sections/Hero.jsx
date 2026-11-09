@@ -52,14 +52,16 @@ export default function Hero() {
               </p>
             </div>
 
-            <p className="hero__desc">
-              Private gardens and landscapes designed as a quiet continuation
-              of the architecture around them.
-            </p>
-
-            <a className="hero__cta" href="#contact">
-              Discuss a Project <span aria-hidden="true">→</span>
-            </a>
+            <div className="hero__aside">
+              <p className="hero__desc">
+                Independent landscape architect creating thoughtful private
+                gardens and outdoor environments
+              </p>
+              <hr className="hero__aside-rule" />
+              <p className="hero__meta-line">
+                Private Gardens · Spatial Design · Landscape Architecture
+              </p>
+            </div>
           </div>
 
           <figure className="hero__main">
