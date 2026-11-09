@@ -40,6 +40,8 @@
 }
 
 .hero__shell {
+  --shell-pad-block: clamp(1.35rem, 2vw, 1.85rem);
+
   position: relative;
   z-index: 1;
   display: grid;
@@ -48,7 +50,7 @@
   min-height: inherit;
   margin-inline: auto;
   padding-inline: var(--margin-inline);
-  padding-block: clamp(1.35rem, 2vw, 1.85rem) clamp(1.35rem, 2vw, 1.85rem);
+  padding-block: var(--shell-pad-block);
 }
 
 /* ——— Top bar ——— */
@@ -365,11 +367,11 @@
   border-radius: 0;
 }
 
-/* ~100px right of the thumb’s grid rule; baseline at viewport/thumb bottom */
+/* ~100px right of the thumb’s grid rule; same baseline as coords */
 .hero__project {
   position: absolute;
   left: calc(var(--detail-w) - var(--side-gap) + 100px);
-  bottom: 0;
+  bottom: var(--shell-pad-block);
   z-index: 2;
   margin: 0;
   padding: 0;
@@ -382,9 +384,12 @@
   white-space: nowrap;
 }
 
+/* Col-4 start + ~100px; shared baseline with project label */
 .hero__coords {
-  grid-column: 4 / span 4;
-  align-self: end;
+  position: absolute;
+  left: calc(var(--margin-inline) + 3 * var(--col) + 100px);
+  bottom: var(--shell-pad-block);
+  z-index: 2;
   margin: 0;
   padding: 0;
   font-size: var(--fs-meta);
@@ -393,6 +398,7 @@
   text-transform: uppercase;
   color: rgb(41 43 39 / 0.7);
   line-height: 1;
+  white-space: nowrap;
 }
 
 @media (max-width: 1440px) {
