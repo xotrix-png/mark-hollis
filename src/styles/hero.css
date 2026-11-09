@@ -211,7 +211,7 @@
 }
 
 .hero__title > span + span {
-  margin-top: 0.08em; /* slight air so “y” clears “C” without oversized gap */
+  margin-top: 0.04em; /* keep tiny y→C air after ~30px leading tighten */
 }
 
 .hero__title--graphite {
