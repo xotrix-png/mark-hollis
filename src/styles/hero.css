@@ -149,9 +149,9 @@
 /* ——— Stage ——— */
 .hero__stage {
   /* Photo + headline clip share this column start (no one-off px).
-     5.135/12 ≈ after “o” in people. at 1920 (чуток right of col 5). */
+     5.15/12 ≈ just after “o” in people. at 1920 (чуток right of col 5). */
   --hero-cols: 12;
-  --hero-photo-col: 5.135;
+  --hero-photo-col: 5.15;
   --hero-copy-cols: 6;
   --hero-photo-start: calc(100% * var(--hero-photo-col) / var(--hero-cols));
 
