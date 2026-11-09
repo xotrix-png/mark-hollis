@@ -238,10 +238,10 @@
 }
 
 .approach__stage-btn {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  column-gap: clamp(1rem, 2vw, 1.75rem);
+  display: flex;
+  justify-content: center;
   align-items: baseline;
+  column-gap: clamp(1rem, 2vw, 1.75rem);
   width: 100%;
   height: 100%;
   margin: 0;
@@ -249,7 +249,7 @@
   border: 0;
   background: transparent;
   color: inherit;
-  text-align: left;
+  text-align: center;
   cursor: pointer;
   font: inherit;
 }
