@@ -79,7 +79,7 @@ export default function Hero() {
           <figure className="hero__detail">
             <img
               src="/images/hero-detail-grass.jpg"
-              alt="Close-up of ornamental grass among stones"
+              alt="Dry grass between rocks with misty residence beyond"
               width={864}
               height={1152}
             />

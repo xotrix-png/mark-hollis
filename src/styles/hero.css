@@ -343,8 +343,9 @@
 .hero__detail img {
   width: 100%;
   height: 100%;
+  /* Portrait grass source → square: keep dry grass + rocks + misty building */
   object-fit: cover;
-  object-position: center;
+  object-position: 50% 28%;
   border-radius: 0;
 }
 
