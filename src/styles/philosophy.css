@@ -3,8 +3,9 @@
   --side-gap: calc((100vw - var(--shell-w)) / 2);
   --content-w: calc(var(--shell-w) - 2 * var(--margin-inline));
   --col: calc(var(--content-w) / 12);
-  /* Body column starts at visual col 8 (= 7 cols from content left) */
+  /* Body/hairline column: visual cols 8–11 (4 cols), capped like .philosophy__aside */
   --body-left: calc(var(--margin-inline) + 7 * var(--col));
+  --body-width: min(calc(4 * var(--col)), 32rem);
   --moss-size: calc(var(--col) * 2);
 
   position: relative;
@@ -178,7 +179,7 @@
 .philosophy__aside {
   /* Visual start ~col 8 within copy that begins at col 5 */
   margin-left: calc(100% * 3 / 8);
-  width: calc(100% * 4 / 8);
+  width: var(--body-width);
   max-width: 32rem;
   display: flex;
   flex-direction: column;
@@ -214,12 +215,12 @@
 }
 
 /*
-  Moss: left edge flush with body-text column (col 8),
-  square — not right-edge floating.
+  Moss: right edge flush with body/hairline column right
+  (same block as desc + OBSERVE rule).
 */
 .philosophy__moss {
   position: absolute;
-  left: var(--body-left);
+  left: calc(var(--body-left) + var(--body-width) - var(--moss-size));
   right: auto;
   bottom: var(--shell-pad-block);
   z-index: 2;
