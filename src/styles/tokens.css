@@ -28,7 +28,7 @@
   --font-sans: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
   --fs-h1: clamp(3.75rem, 5.4vw, 6rem); /* ~60–96px */
-  --lh-h1: 1.28; /* clear “y” descender above Considered */
+  --lh-h1: 1.06; /* middle ground: clear y→C without oversized leading */
   --fs-desc: clamp(1.0625rem, 0.98vw, 1.125rem); /* 17–18px */
   --lh-desc: 1.55;
   --fs-nav: clamp(0.6875rem, 0.68vw, 0.75rem); /* 11–12px */

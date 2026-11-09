@@ -211,7 +211,7 @@
 }
 
 .hero__title > span + span {
-  margin-top: 0.14em; /* air so “y” descender clears “C” */
+  margin-top: 0.06em; /* slight air so “y” clears “C” without oversized gap */
 }
 
 .hero__title--graphite {
