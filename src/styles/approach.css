@@ -1,6 +1,7 @@
 /*
   Approach — same fluid 12-col contract as Hero / Philosophy / About.
   Red mark: sketch left edge flush to outermost content/grid rule (col 1 / rule 0).
+  v2: intro + olive stage titles with trailing dots; Concept italic + body.
 */
 .approach {
   position: relative;
@@ -126,27 +127,40 @@
   color: var(--color-olive);
 }
 
-/* Sketch: left edge on rule 0; shares row 2 with stages so tops align */
+/* Sketch: left edge on rule 0; top aligns with right intro */
 .approach__sketch {
   grid-column: 1 / span var(--ap-left-cols);
   grid-row: 2;
   margin: 0;
   width: 100%;
   max-width: none;
-  overflow: hidden;
-  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.65rem, 1.4vh, 1rem);
+  min-width: 0;
 }
 
 .approach__sketch img {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 52vh;
+  max-height: 42vh;
   max-width: none;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   object-position: 50% 40%;
   border-radius: 0;
+}
+
+.approach__caption {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--color-graphite);
 }
 
 .approach__divider {
@@ -159,10 +173,27 @@
   min-height: 12rem;
 }
 
-.approach__stages {
+.approach__right {
   grid-column: var(--ap-right-start) / span var(--ap-right-cols);
   grid-row: 2;
   align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1rem, 2.2vh, 1.65rem);
+  min-width: 0;
+}
+
+.approach__intro {
+  margin: 0;
+  max-width: 28rem;
+  font-family: var(--font-sans);
+  font-size: var(--fs-philosophy-body);
+  font-weight: 500;
+  line-height: var(--lh-philosophy-body);
+  color: var(--color-graphite);
+}
+
+.approach__stages {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -173,10 +204,10 @@
 
 .approach__stage-row {
   display: grid;
-  grid-template-columns: auto minmax(0, 0.9fr) minmax(0, 1.6fr);
-  column-gap: clamp(0.85rem, 1.6vw, 1.5rem);
-  align-items: baseline;
-  padding-block: clamp(1.1rem, 2.4vh, 1.65rem);
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  column-gap: clamp(1rem, 2vw, 1.75rem);
+  align-items: center;
+  padding-block: clamp(0.85rem, 1.7vh, 1.25rem);
   border-top: 1px solid rgb(41 43 39 / 0.45);
   opacity: 0;
   transform: translateY(0.55rem);
@@ -184,6 +215,10 @@
     opacity 620ms var(--ease-out),
     transform 620ms var(--ease-out);
   transition-delay: calc(var(--i) * 90ms);
+}
+
+.approach__stage-row.has-body {
+  align-items: start;
 }
 
 .approach__stage-row:last-child {
@@ -195,33 +230,66 @@
   transform: none;
 }
 
+/* Larger stage numbers — clearly readable vs mockup’s tiny numerals */
 .approach__num {
   font-family: var(--font-display);
-  font-size: clamp(0.95rem, 1.05vw, 1.15rem);
+  font-size: clamp(1.55rem, 2.05vw, 2.15rem);
   font-weight: 500;
-  line-height: 1.2;
-  letter-spacing: 0.04em;
+  line-height: 1;
+  letter-spacing: 0.02em;
   color: var(--color-graphite);
   font-variant-numeric: tabular-nums;
+  padding-top: 0.28em;
+}
+
+.approach__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
 }
 
 .approach__name {
   margin: 0;
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 1.7vw, 1.85rem);
+  font-size: clamp(2.15rem, 3vw, 3.15rem);
   font-weight: 500;
-  line-height: 1.15;
-  letter-spacing: -0.01em;
-  color: var(--color-graphite);
+  font-style: normal;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  color: var(--color-olive);
+}
+
+.approach__name.is-italic {
+  font-style: italic;
 }
 
 .approach__line {
   margin: 0;
+  max-width: 22rem;
   font-family: var(--font-sans);
-  font-size: var(--fs-philosophy-body);
+  font-size: clamp(0.95rem, 0.95vw, 1.05rem);
   font-weight: 500;
-  line-height: var(--lh-philosophy-body);
+  line-height: 1.4;
   color: var(--color-graphite);
+}
+
+.approach__dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-top: 0.85em;
+  border-radius: 50%;
+  background-color: var(--color-olive);
+  flex-shrink: 0;
+}
+
+.approach__stage-row:not(.has-body) .approach__dot {
+  margin-top: 0;
+  align-self: center;
+}
+
+.approach__stage-row.has-body .approach__num {
+  padding-top: 0.45em;
 }
 
 @media (max-width: 1280px) {
@@ -229,13 +297,16 @@
     font-size: clamp(3.15rem, 4.6vw, 4.35rem);
   }
 
-  .approach__stage-row {
-    grid-template-columns: auto minmax(0, 1fr);
-    row-gap: 0.35rem;
+  .approach__name {
+    font-size: clamp(2rem, 3.1vw, 2.75rem);
   }
 
-  .approach__line {
-    grid-column: 2 / -1;
+  .approach__num {
+    font-size: clamp(1.4rem, 1.85vw, 1.75rem);
+  }
+
+  .approach__intro {
+    max-width: 24rem;
   }
 }
 
