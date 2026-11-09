@@ -1,4 +1,11 @@
 .hero {
+  /* Shared measures for left-bleed detail thumb */
+  --shell-w: min(100vw, var(--max-width));
+  --side-gap: calc((100vw - var(--shell-w)) / 2);
+  --content-w: calc(var(--shell-w) - 2 * var(--margin-inline));
+  --col: calc(var(--content-w) / 12);
+  --detail-w: calc(var(--side-gap) + var(--margin-inline) + var(--col));
+
   position: relative;
   isolation: isolate;
   min-height: 100vh;
@@ -318,6 +325,8 @@
   grid-template-columns: repeat(12, minmax(0, 1fr));
   align-items: end;
   column-gap: 0;
+  /* Reserve square thumb height so stage doesn’t collide */
+  min-height: var(--detail-w);
   opacity: 0;
   transform: translateY(0.35rem);
   transition:
@@ -331,16 +340,15 @@
 }
 
 /*
-  Detail thumb: full-bleed left to the viewport edge,
-  right edge stays on the col-2 grid rule. Square + cover.
+  Detail thumb: full-bleed left + bottom to the viewport edges,
+  right edge on the col-2 grid rule. Square + cover.
 */
 .hero__detail {
-  --bleed-left: calc(
-    var(--margin-inline) + (100vw - min(100vw, var(--max-width))) / 2
-  );
-  grid-column: 1 / span 1;
-  width: calc(100% + var(--bleed-left));
-  margin-left: calc(-1 * var(--bleed-left));
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 2;
+  width: var(--detail-w);
   aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 0;
@@ -355,10 +363,12 @@
   border-radius: 0;
 }
 
-/* Label starts at the same rule, baseline with thumb bottom */
+/* ~100px right of the thumb’s grid rule; baseline at viewport/thumb bottom */
 .hero__project {
-  grid-column: 2 / span 2;
-  align-self: end;
+  position: absolute;
+  left: calc(var(--detail-w) + 100px);
+  bottom: 0;
+  z-index: 2;
   margin: 0;
   padding: 0;
   font-size: var(--fs-meta);
@@ -367,6 +377,7 @@
   text-transform: uppercase;
   color: var(--color-graphite);
   line-height: 1;
+  white-space: nowrap;
 }
 
 .hero__coords {
