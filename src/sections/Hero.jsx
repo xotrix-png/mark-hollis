@@ -76,18 +76,15 @@ export default function Hero() {
         </div>
 
         <footer className="hero__foot">
-          <div className="hero__foot-left">
-            <figure className="hero__detail">
-              <img
-                src="/images/hero-detail-grass.jpg"
-                alt="Close-up of ornamental grass among stones"
-                width={864}
-                height={1152}
-              />
-            </figure>
-            <p className="hero__project">01 / 06 — Private Residence</p>
-          </div>
-
+          <figure className="hero__detail">
+            <img
+              src="/images/hero-detail-grass.jpg"
+              alt="Close-up of ornamental grass among stones"
+              width={864}
+              height={1152}
+            />
+          </figure>
+          <p className="hero__project">01 / 06 — Private Residence</p>
           <p className="hero__coords">(01) N 53°54′ E 27°34′</p>
         </footer>
       </div>
