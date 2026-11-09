@@ -149,9 +149,9 @@
 /* ——— Stage ——— */
 .hero__stage {
   /* Photo + headline clip share this column start (no one-off px).
-     ~4.795/12 ≈ after “PE” in people at 1920 (ople on photo). */
+     ~4.81/12 ≈ after “PE” (with tiny o kern) at 1920. */
   --hero-cols: 12;
-  --hero-photo-col: 4.795;
+  --hero-photo-col: 4.81;
   --hero-copy-cols: 6;
   --hero-photo-start: calc(100% * var(--hero-photo-col) / var(--hero-cols));
 
@@ -238,6 +238,11 @@
   font-style: italic;
   font-weight: 500;
   color: var(--color-olive);
+}
+
+/* Tiny optical kern: open pe→o without moving the photo cut */
+.hero__people-o {
+  margin-left: 0.04em;
 }
 
 .hero__desc {

@@ -9,7 +9,11 @@ function HeadlineLines() {
       <span>
         by <em className="hero__nature">nature</em>
       </span>
-      <span>Considered by people</span>
+      <span>
+        {'Considered by pe'}
+        <span className="hero__people-o">o</span>
+        {'ple'}
+      </span>
     </>
   )
 }
