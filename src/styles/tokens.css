@@ -6,11 +6,12 @@
   --color-warm-grey: #b5aea1;
   --color-taupe: #a28b70;
 
-  /* Layout */
-  --margin-inline: clamp(1.5rem, 5.5vw, 6.25rem); /* ~24–100px */
+  /* Layout — desktop editorial frame */
+  --margin-inline: clamp(2.5rem, 5.2vw, 6.25rem); /* ~40–100px */
   --max-width: 111.25rem; /* 1780px */
   --grid-columns: 12;
-  --grid-gutter: clamp(0.75rem, 1.15vw, 1.35rem);
+  --grid-gutter: 0;
+  --rule-color: rgb(41 43 39 / 0.14);
 
   /* Spacing */
   --space-2xs: 0.25rem;
@@ -26,16 +27,16 @@
   --font-display: 'Cormorant Garamond', 'Times New Roman', Times, serif;
   --font-sans: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-  --fs-h1: clamp(3.4rem, 5.35vw, 6rem); /* ~54–96px @1920 */
-  --lh-h1: 0.93;
-  --fs-desc: clamp(1.0625rem, 0.98vw, 1.125rem); /* ~17–18px */
+  --fs-h1: clamp(3.75rem, 5.4vw, 6rem); /* ~60–96px */
+  --lh-h1: 0.92;
+  --fs-desc: clamp(1.0625rem, 0.98vw, 1.125rem); /* 17–18px */
   --lh-desc: 1.55;
-  --fs-nav: clamp(0.6875rem, 0.7vw, 0.75rem); /* ~11–12px */
-  --fs-meta: clamp(0.625rem, 0.64vw, 0.6875rem); /* ~10–11px */
+  --fs-nav: clamp(0.6875rem, 0.68vw, 0.75rem); /* 11–12px */
+  --fs-meta: clamp(0.625rem, 0.62vw, 0.6875rem); /* 10–11px */
   --tracking-caps: 0.12em;
 
   /* Motion */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --duration-load: 800ms;
-  --duration-hover: 320ms;
+  --duration-load: 780ms;
+  --duration-hover: 300ms;
 }
