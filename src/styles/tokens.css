@@ -27,7 +27,7 @@
   --font-display: 'Cormorant Garamond', 'Times New Roman', Times, serif;
   --font-sans: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-  --fs-h1: clamp(3.75rem, 5.4vw, 6rem); /* ~60–96px */
+  --fs-h1: clamp(3.4rem, 4.85vw, 5.35rem); /* slightly reduced so “o” in people stays on ivory */
   --lh-h1: 0.92;
   --fs-desc: clamp(1.0625rem, 0.98vw, 1.125rem); /* 17–18px */
   --lh-desc: 1.55;
