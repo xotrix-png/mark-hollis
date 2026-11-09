@@ -4,33 +4,30 @@ import '../styles/approach.css'
 const INTRO =
   'Four quiet steps, from the first walk on site to the day the garden takes root.'
 
-/* Distinct stage photos not yet supplied — all layers share the sketch until then. */
-const STAGE_IMAGE = '/images/approach-sketch.jpg'
-
 const STAGES = [
   {
     num: '01',
     name: 'Observation',
-    image: STAGE_IMAGE,
-    alt: 'Hand-drawn landscape plan sketch — observation stage',
+    image: '/images/approach-observation.jpg',
+    alt: 'Wild misty undeveloped site among trees at dawn',
   },
   {
     num: '02',
     name: 'Concept',
-    image: STAGE_IMAGE,
-    alt: 'Hand-drawn landscape plan sketch — concept stage',
+    image: '/images/approach-concept.jpg',
+    alt: 'Hand-drawn landscape plan sketch with path, trees, and pond',
   },
   {
     num: '03',
     name: 'Design',
-    image: STAGE_IMAGE,
-    alt: 'Hand-drawn landscape plan sketch — design stage',
+    image: '/images/approach-design.jpg',
+    alt: 'Technical landscape plan with material samples on a desk',
   },
   {
     num: '04',
     name: 'Realization',
-    image: STAGE_IMAGE,
-    alt: 'Hand-drawn landscape plan sketch — realization stage',
+    image: '/images/approach-realization.jpg',
+    alt: 'Finished garden path with birch trees',
   },
 ]
 
@@ -43,6 +40,20 @@ export default function Approach() {
   useEffect(() => {
     const frame = requestAnimationFrame(() => setReady(true))
     return () => cancelAnimationFrame(frame)
+  }, [])
+
+  // Preload all four stage photos so hover crossfades without layout hitch
+  useEffect(() => {
+    const loaders = STAGES.map((step) => {
+      const img = new Image()
+      img.src = step.image
+      return img
+    })
+    return () => {
+      loaders.forEach((img) => {
+        img.src = ''
+      })
+    }
   }, [])
 
   const onIntersect = useEffectEvent((isIntersecting) => {

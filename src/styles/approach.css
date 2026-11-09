@@ -182,7 +182,7 @@
   object-position: 50% 40%;
   border-radius: 0;
   opacity: 0;
-  transition: opacity 520ms var(--ease-out);
+  transition: opacity 400ms var(--ease-out);
 }
 
 .approach__photo.is-active {
