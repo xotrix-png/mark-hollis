@@ -84,8 +84,10 @@
 
   display: grid;
   grid-template-columns: repeat(var(--ap-cols), minmax(0, 1fr));
+  grid-template-rows: auto auto;
   align-items: start;
   column-gap: 0;
+  row-gap: clamp(1.25rem, 2.8vh, 2rem);
   margin-top: clamp(1.25rem, 3vh, 2.25rem);
   opacity: 0;
   transform: translateY(0.65rem);
@@ -99,17 +101,11 @@
   transform: none;
 }
 
-.approach__left {
-  grid-column: 1 / span var(--ap-left-cols);
-  display: flex;
-  flex-direction: column;
-  gap: clamp(1.25rem, 2.8vh, 2rem);
-  min-width: 0;
-  padding-top: clamp(0.25rem, 1vh, 0.75rem);
-}
-
 .approach__title {
+  grid-column: 1 / span var(--ap-left-cols);
+  grid-row: 1;
   margin: 0;
+  padding-top: clamp(0.25rem, 1vh, 0.75rem);
   font-family: var(--font-display);
   font-size: var(--fs-h2);
   font-weight: 500;
@@ -130,8 +126,10 @@
   color: var(--color-olive);
 }
 
-/* Sketch: left edge on rule 0 (red mark) — full width of left cols */
+/* Sketch: left edge on rule 0; shares row 2 with stages so tops align */
 .approach__sketch {
+  grid-column: 1 / span var(--ap-left-cols);
+  grid-row: 2;
   margin: 0;
   width: 100%;
   max-width: none;
@@ -140,6 +138,7 @@
 }
 
 .approach__sketch img {
+  display: block;
   width: 100%;
   height: auto;
   max-height: 52vh;
@@ -152,19 +151,21 @@
 
 .approach__divider {
   grid-column: var(--ap-divider-col);
+  grid-row: 2;
   align-self: stretch;
   width: 1px;
   justify-self: center;
-  margin-block: clamp(0.5rem, 1.5vh, 1rem) 0;
   background-color: rgb(41 43 39 / 0.45);
   min-height: 12rem;
 }
 
 .approach__stages {
   grid-column: var(--ap-right-start) / span var(--ap-right-cols);
+  grid-row: 2;
+  align-self: start;
   list-style: none;
   margin: 0;
-  padding: clamp(0.75rem, 2vh, 1.5rem) 0 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
   min-width: 0;

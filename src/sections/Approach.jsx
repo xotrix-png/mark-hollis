@@ -72,23 +72,22 @@ export default function Approach() {
             visible ? 'approach__stage is-inview' : 'approach__stage'
           }
         >
-          <div className="approach__left">
-            <h2 className="approach__title">
-              <span>From land</span>
-              <span>
-                to <em className="approach__landscape">landscape.</em>
-              </span>
-            </h2>
+          <h2 className="approach__title">
+            <span>From land</span>
+            <span>
+              to <em className="approach__landscape">landscape.</em>
+            </span>
+          </h2>
 
-            <figure className="approach__sketch">
-              <img
-                src="/images/approach-sketch.jpg"
-                alt="Hand-drawn landscape plan sketch with path, trees, and pond"
-                width={864}
-                height={1152}
-              />
-            </figure>
-          </div>
+          {/* Row 2: sketch top aligns with stages row 01 top */}
+          <figure className="approach__sketch">
+            <img
+              src="/images/approach-sketch.jpg"
+              alt="Hand-drawn landscape plan sketch with path, trees, and pond"
+              width={864}
+              height={1152}
+            />
+          </figure>
 
           <div className="approach__divider" aria-hidden="true" />
 
