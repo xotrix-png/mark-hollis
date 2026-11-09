@@ -382,25 +382,6 @@
   white-space: nowrap;
 }
 
-/* Right-aligned to last content/grid rule (shell content right edge) */
-.hero__coords {
-  position: absolute;
-  right: var(--margin-inline);
-  left: auto;
-  bottom: var(--shell-pad-block);
-  z-index: 2;
-  margin: 0;
-  padding: 0;
-  font-size: var(--fs-meta);
-  font-weight: 500;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
-  color: rgb(41 43 39 / 0.7);
-  line-height: 1;
-  white-space: nowrap;
-  text-align: right;
-}
-
 @media (max-width: 1440px) {
   .hero-nav__links {
     grid-column: 7 / span 3;

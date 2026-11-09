@@ -1,0 +1,242 @@
+/*
+  About — same fluid 12-col contract as Hero / Philosophy.
+  Red-mark overrides: portrait left on rule 7 (col 8) → far-right rule 12;
+  signature left aligned to that same rule.
+*/
+.about {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: var(--color-ivory);
+  color: var(--color-graphite);
+  overflow: clip;
+}
+
+.about__rules {
+  position: absolute;
+  inset-block: 0;
+  left: 50%;
+  z-index: 0;
+  width: min(100%, var(--max-width));
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.about__rule {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(
+    var(--margin-inline) +
+      (100% - 2 * var(--margin-inline)) * var(--i) / var(--grid-columns)
+  );
+  width: 1px;
+  margin-left: -0.5px;
+  background-color: var(--rule-color);
+}
+
+.about__shell {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: auto auto;
+  align-content: start;
+  width: min(100%, var(--max-width));
+  min-height: inherit;
+  margin-inline: auto;
+  padding-inline: var(--margin-inline);
+  padding-block: var(--shell-pad-block);
+}
+
+.about__bar {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  align-items: baseline;
+  opacity: 0;
+  transform: translateY(-0.3rem);
+  transition:
+    opacity var(--duration-load) var(--ease-out),
+    transform var(--duration-load) var(--ease-out);
+}
+
+.about.is-ready .about__bar {
+  opacity: 1;
+  transform: none;
+}
+
+.about__kicker {
+  grid-column: 1 / span 4;
+  margin: 0;
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--color-graphite);
+}
+
+.about__stage {
+  --about-cols: var(--grid-columns);
+  /* Copy from rule 1 (col 2); portrait rule 7→12 (cols 8–12) per red mark */
+  --about-copy-start: 2;
+  --about-copy-cols: 4;
+  --about-photo-start: 8;
+  --about-photo-cols: 5;
+  /* Signature left = same rule as portrait left (Hero-style % of stage) */
+  --about-sign-start: calc(
+    100% * (var(--about-photo-start) - 1) / var(--about-cols)
+  );
+
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--about-cols), minmax(0, 1fr));
+  align-items: start;
+  column-gap: 0;
+  margin-top: clamp(1.25rem, 3vh, 2.25rem);
+  opacity: 0;
+  transform: translateY(0.65rem);
+  transition:
+    opacity var(--duration-load) var(--ease-out) 80ms,
+    transform var(--duration-load) var(--ease-out) 80ms;
+}
+
+.about.is-ready .about__stage {
+  opacity: 1;
+  transform: none;
+}
+
+.about__copy {
+  grid-column: var(--about-copy-start) / span var(--about-copy-cols);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.25rem, 2.6vh, 1.85rem);
+  min-width: 0;
+  padding-top: clamp(0.35rem, 1.2vh, 1rem);
+}
+
+.about__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 500;
+  line-height: var(--lh-h2);
+  letter-spacing: -0.015em;
+  color: var(--color-graphite);
+}
+
+.about__title > span {
+  display: block;
+  white-space: nowrap;
+}
+
+.about__intention {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-olive);
+}
+
+.about__aside {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-width: 28rem;
+}
+
+.about__desc {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-philosophy-body);
+  font-weight: 500;
+  line-height: var(--lh-philosophy-body);
+  color: var(--color-graphite);
+}
+
+.about__rule-line {
+  width: 100%;
+  height: 0;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid rgb(41 43 39 / 0.55);
+}
+
+.about__meta-line {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta-line);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+/* Signature: left edge on portrait’s rule (col 8) — red-mark override */
+.about__sign {
+  position: absolute;
+  left: var(--about-sign-start);
+  bottom: clamp(4.5rem, 10vh, 7rem);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.about__signature {
+  display: block;
+  width: min(42vw, 15rem);
+  height: auto;
+  color: var(--color-graphite);
+}
+
+.about__portrait {
+  grid-column: var(--about-photo-start) / span var(--about-photo-cols);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+  min-width: 0;
+  /* Slightly lower than the headline */
+  padding-top: clamp(2rem, 5vh, 3.5rem);
+}
+
+.about__portrait-frame {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  max-height: 62vh;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.about__portrait-frame img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 50% 18%;
+  border-radius: 0;
+}
+
+.about__caption {
+  margin: 0;
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  line-height: 1.35;
+  color: var(--color-graphite);
+}
+
+@media (max-width: 1280px) {
+  .about__title {
+    font-size: clamp(3.15rem, 4.6vw, 4.35rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__bar,
+  .about__stage {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
