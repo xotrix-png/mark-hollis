@@ -28,6 +28,7 @@
   --font-display: 'Cormorant Garamond', 'Times New Roman', Times, serif;
   --font-sans: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  --font-signature: 'Mrs Saint Delafield', 'Segoe Script', cursive;
 
   --fs-h1: clamp(3.75rem, 5.4vw, 6rem); /* ~60–96px */
   --lh-h1: 1.08; /* ~30px tighter total than 1.18+0.08em spacing */

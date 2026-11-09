@@ -1,28 +1,6 @@
 import { useEffect, useState } from 'react'
 import '../styles/about.css'
 
-function Signature() {
-  return (
-    <svg
-      className="about__signature"
-      viewBox="0 0 260 56"
-      role="img"
-      aria-label="Mark Vetrov signature"
-    >
-      <text
-        x="0"
-        y="36"
-        fill="currentColor"
-        fontFamily="'Segoe Script', 'Snell Roundhand', 'Brush Script MT', Georgia, cursive"
-        fontStyle="italic"
-        fontSize="34"
-      >
-        Mark Vetrov
-      </text>
-    </svg>
-  )
-}
-
 export default function About() {
   const [ready, setReady] = useState(false)
 
@@ -84,10 +62,8 @@ export default function About() {
             </figcaption>
           </figure>
 
-          {/* Left edge on rule 7 / col 8 — same as portrait (red-mark override) */}
-          <div className="about__sign">
-            <Signature />
-          </div>
+          {/* Left edge on markup grid line (rule 5 / col 6) */}
+          <p className="about__signature">Mark Vetrov</p>
         </div>
       </div>
     </section>
