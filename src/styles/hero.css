@@ -384,10 +384,11 @@
   white-space: nowrap;
 }
 
-/* Col-4 start + ~100px; shared baseline with project label */
+/* Right-aligned to last content/grid rule (shell content right edge) */
 .hero__coords {
   position: absolute;
-  left: calc(var(--margin-inline) + 3 * var(--col) + 100px);
+  right: var(--margin-inline);
+  left: auto;
   bottom: var(--shell-pad-block);
   z-index: 2;
   margin: 0;
@@ -399,6 +400,7 @@
   color: rgb(41 43 39 / 0.7);
   line-height: 1;
   white-space: nowrap;
+  text-align: right;
 }
 
 @media (max-width: 1440px) {
