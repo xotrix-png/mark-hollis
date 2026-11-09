@@ -2,6 +2,18 @@ import { useEffect, useState } from 'react'
 import HeroNav from '../components/HeroNav.jsx'
 import '../styles/hero.css'
 
+function HeadlineLines() {
+  return (
+    <>
+      <span>Spaces shaped</span>
+      <span>
+        by <em className="hero__nature">nature.</em>
+      </span>
+      <span>Considered by people.</span>
+    </>
+  )
+}
+
 export default function Hero() {
   const [ready, setReady] = useState(false)
 
@@ -27,13 +39,14 @@ export default function Hero() {
 
         <div className="hero__stage">
           <div className="hero__copy">
-            <h1 className="hero__title">
-              <span>Spaces shaped</span>
-              <span>
-                by <em className="hero__nature">nature.</em>
-              </span>
-              <span>Considered by people.</span>
-            </h1>
+            <div className="hero__title-split">
+              <h1 className="hero__title hero__title--graphite">
+                <HeadlineLines />
+              </h1>
+              <p className="hero__title hero__title--ivory" aria-hidden="true">
+                <HeadlineLines />
+              </p>
+            </div>
 
             <p className="hero__desc">
               Private gardens and landscapes designed as a quiet continuation

@@ -148,6 +148,12 @@
 
 /* ——— Stage ——— */
 .hero__stage {
+  /* Photo + headline clip share this column start (no one-off px). */
+  --hero-cols: 12;
+  --hero-photo-col: 5;
+  --hero-copy-cols: 6;
+  --hero-photo-start: calc(100% * var(--hero-photo-col) / var(--hero-cols));
+
   position: relative;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -165,7 +171,7 @@
   align-items: flex-start;
   justify-content: center;
   gap: clamp(1.25rem, 2.2vh, 1.75rem);
-  padding-right: 0.5rem;
+  /* No horizontal padding — title width must equal stage width for clip lock */
   padding-bottom: clamp(1.5rem, 4vh, 3rem);
   opacity: 0;
   transform: translateY(0.75rem);
@@ -179,19 +185,42 @@
   transform: none;
 }
 
+/* Dual-tone H1: graphite | ivory split exactly at photo edge */
+.hero__title-split {
+  position: relative;
+  width: 100%;
+}
+
 .hero__title {
   font-family: var(--font-display);
   font-size: var(--fs-h1);
   font-weight: 500;
   line-height: var(--lh-h1);
   letter-spacing: -0.015em;
-  color: var(--color-graphite);
-  text-shadow: 0 0 20px rgb(232 227 217 / 0.65);
+  /* Full stage width so clip % matches --hero-photo-start on .hero__main */
+  width: calc(100% * var(--hero-cols) / var(--hero-copy-cols));
 }
 
 .hero__title > span {
   display: block;
   white-space: nowrap;
+}
+
+.hero__title--graphite {
+  position: relative;
+  color: var(--color-graphite);
+  /* Same --hero-photo-start as .hero__main left (100% → stage-sized title box) */
+  clip-path: inset(0 calc(100% - var(--hero-photo-start)) 0 0);
+}
+
+.hero__title--ivory {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  color: var(--color-ivory);
+  clip-path: inset(0 0 0 var(--hero-photo-start));
+  pointer-events: none;
 }
 
 .hero__nature {
@@ -239,18 +268,18 @@
 }
 
 /*
-  Main photo: starts at column 6 line (after 5 cols) → ~7 cols,
-  bleeds to the viewport’s right edge. Sharp corners.
+  Main photo: starts at --hero-photo-start (~7 cols to right edge).
+  Same variable drives the H1 ivory clip-path.
 */
 .hero__main {
   position: absolute;
   z-index: 1;
   top: 0;
   bottom: 0;
-  left: calc(100% * 5 / 12);
+  left: var(--hero-photo-start);
   width: calc(
-    100% * 7 / 12 + var(--margin-inline) +
-      (100vw - min(100vw, var(--max-width))) / 2
+    100% * (var(--hero-cols) - var(--hero-photo-col)) / var(--hero-cols) +
+      var(--margin-inline) + (100vw - min(100vw, var(--max-width))) / 2
   );
   margin: 0;
   overflow: hidden;
