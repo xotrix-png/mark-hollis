@@ -17,7 +17,7 @@ export default function HeroNav() {
         <span aria-hidden="true">,</span>
         <a href="#about">About</a>
         <span aria-hidden="true">,</span>
-        <a href="#philosophy">Approach</a>
+        <a href="#approach">Approach</a>
         <span aria-hidden="true">,</span>
         <a href="#contact">Contact</a>
       </nav>
