@@ -7,9 +7,9 @@ function HeadlineLines() {
     <>
       <span>Spaces shaped</span>
       <span>
-        by <em className="hero__nature">nature</em>
+        by <em className="hero__nature">nature.</em>
       </span>
-      <span>Considered by people</span>
+      <span>Considered by people.</span>
     </>
   )
 }
