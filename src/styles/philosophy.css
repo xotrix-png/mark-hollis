@@ -3,6 +3,9 @@
   --side-gap: calc((100vw - var(--shell-w)) / 2);
   --content-w: calc(var(--shell-w) - 2 * var(--margin-inline));
   --col: calc(var(--content-w) / 12);
+  /* Body column starts at visual col 8 (= 7 cols from content left) */
+  --body-left: calc(var(--margin-inline) + 7 * var(--col));
+  --moss-size: calc(var(--col) * 2);
 
   position: relative;
   isolation: isolate;
@@ -78,28 +81,14 @@
   color: var(--color-graphite);
 }
 
-.philosophy__coords {
-  grid-column: 8 / span 5;
-  justify-self: end;
-  margin: 0;
-  font-size: var(--fs-meta);
-  font-weight: 500;
-  letter-spacing: var(--tracking-caps);
-  text-transform: uppercase;
-  line-height: 1;
-  color: rgb(41 43 39 / 0.7);
-  white-space: nowrap;
-  text-align: right;
-}
-
 /* ——— Stage ——— */
 .philosophy__stage {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   align-items: start;
   column-gap: 0;
-  margin-top: clamp(2.25rem, 5vh, 3.5rem);
-  margin-bottom: clamp(2rem, 4vh, 3rem);
+  margin-top: clamp(1.75rem, 4vh, 2.75rem);
+  margin-bottom: clamp(1.5rem, 3.5vh, 2.5rem);
   opacity: 0;
   transform: translateY(0.65rem);
   transition:
@@ -150,9 +139,9 @@
   grid-column: 5 / span 8;
   display: flex;
   flex-direction: column;
-  gap: clamp(1.75rem, 3.5vh, 2.75rem);
+  gap: clamp(1.5rem, 3vh, 2.25rem);
   min-width: 0;
-  padding-top: clamp(0.5rem, 1.5vh, 1.25rem);
+  padding-top: clamp(0.35rem, 1.2vh, 1rem);
 }
 
 .philosophy__title {
@@ -189,18 +178,19 @@
 .philosophy__aside {
   /* Visual start ~col 8 within copy that begins at col 5 */
   margin-left: calc(100% * 3 / 8);
-  max-width: 26.5rem;
+  width: calc(100% * 4 / 8);
+  max-width: 32rem;
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.9rem;
 }
 
 .philosophy__desc {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: var(--fs-desc);
+  font-size: var(--fs-philosophy-body);
   font-weight: 500;
-  line-height: var(--lh-desc);
+  line-height: var(--lh-philosophy-body);
   color: var(--color-graphite);
 }
 
@@ -223,13 +213,17 @@
   color: var(--color-graphite);
 }
 
-/* ——— Moss thumb: bottom-right, flush to last content rule ——— */
+/*
+  Moss: left edge flush with body-text column (col 8),
+  square — not right-edge floating.
+*/
 .philosophy__moss {
   position: absolute;
-  right: var(--margin-inline);
+  left: var(--body-left);
+  right: auto;
   bottom: var(--shell-pad-block);
   z-index: 2;
-  width: calc(var(--col) * 1.85);
+  width: var(--moss-size);
   aspect-ratio: 1 / 1;
   margin: 0;
   overflow: hidden;
@@ -256,11 +250,11 @@
 
 @media (max-width: 1280px) {
   .philosophy__title {
-    font-size: clamp(2.75rem, 4.2vw, 3.85rem);
+    font-size: clamp(3.15rem, 4.6vw, 4.35rem);
   }
 
   .philosophy__aside {
-    max-width: 24rem;
+    max-width: 28rem;
   }
 }
 

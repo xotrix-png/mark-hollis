@@ -24,7 +24,6 @@ export default function Philosophy() {
       <div className="philosophy__shell">
         <header className="philosophy__bar">
           <p className="philosophy__kicker">02 / Philosophy</p>
-          <p className="philosophy__coords">(02) N 42°15′ W 73°47′</p>
         </header>
 
         <div className="philosophy__stage">
@@ -53,7 +52,8 @@ export default function Philosophy() {
             <div className="philosophy__aside">
               <p className="philosophy__desc">
                 It is the way light moves across stone. The silence between
-                trees. The feeling of arriving somewhere you want to stay.
+                trees. The weight of shade at noon. The feeling of arriving
+                somewhere you want to stay.
               </p>
               <hr className="philosophy__rule-line" />
               <p className="philosophy__meta-line">

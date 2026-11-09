@@ -30,8 +30,10 @@
 
   --fs-h1: clamp(3.75rem, 5.4vw, 6rem); /* ~60–96px */
   --lh-h1: 1.08; /* ~30px tighter total than 1.18+0.08em spacing */
-  --fs-h2: clamp(3.15rem, 4.4vw, 4.85rem); /* philosophy display */
-  --lh-h2: 1.06;
+  --fs-h2: clamp(3.65rem, 5.05vw, 5.5rem); /* philosophy display — denser */
+  --lh-h2: 1.05;
+  --fs-philosophy-body: clamp(1.125rem, 1.12vw, 1.3125rem); /* ~18–21px */
+  --lh-philosophy-body: 1.38;
   --fs-desc: clamp(1.0625rem, 0.98vw, 1.125rem); /* 17–18px */
   --lh-desc: 1.35;
   --fs-meta-line: clamp(0.625rem, 0.62vw, 0.6875rem); /* ~10–11px mono caps */
