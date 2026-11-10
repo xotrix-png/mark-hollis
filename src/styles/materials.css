@@ -82,8 +82,10 @@
 .materials__stage {
   display: grid;
   grid-template-columns: repeat(var(--mat-cols), minmax(0, 1fr));
-  align-items: center;
+  grid-template-rows: auto auto;
+  align-items: stretch;
   column-gap: 0;
+  row-gap: 0.7rem;
   margin-top: clamp(1.35rem, 3.2vh, 2.5rem);
   margin-bottom: clamp(0.75rem, 1.8vh, 1.35rem);
   min-height: 0;
@@ -91,10 +93,13 @@
 
 .materials__copy {
   grid-column: 1 / span 3;
+  grid-row: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  align-self: stretch;
   min-width: 0;
+  min-height: 0;
   opacity: 0;
   transform: translateY(0.65rem);
   transition:
@@ -184,7 +189,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  margin-top: clamp(2rem, 2.5vw, 3rem); /* ~48px @1920 below aside */
+  /* Bottom edge shares the photo baseline (stage row 1) */
+  margin-top: auto;
   padding: clamp(0.9rem, 0.94vw, 1.125rem) clamp(1.35rem, 1.46vw, 1.75rem);
   border: 1px solid var(--color-graphite);
   border-radius: 0;
@@ -221,26 +227,23 @@
   outline-offset: 3px;
 }
 
-.materials__gallery {
+.materials__photos {
   grid-column: 5 / span 8;
+  grid-row: 1;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  grid-template-rows: auto auto;
   column-gap: var(--mat-gap);
-  row-gap: 0.7rem;
+  align-items: end;
   min-width: 0;
 }
 
-/* Children join the gallery grid so photo bottoms + captions share rows */
 .materials__shot {
-  display: contents;
+  margin: 0;
+  min-width: 0;
 }
 
 .materials__frame {
-  grid-row: 1;
-  align-self: end;
   width: 100%;
-  min-width: 0;
   overflow: hidden;
   border-radius: 0;
   opacity: 0;
@@ -273,8 +276,16 @@
   border-radius: 0;
 }
 
-.materials__caption {
+.materials__captions {
+  grid-column: 5 / span 8;
   grid-row: 2;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: var(--mat-gap);
+  min-width: 0;
+}
+
+.materials__caption {
   margin: 0;
   font-size: var(--fs-meta);
   font-weight: 500;
@@ -287,7 +298,16 @@
   transition:
     opacity 720ms var(--ease-out),
     transform 720ms var(--ease-out);
-  transition-delay: calc(220ms + var(--i) * 110ms);
+}
+
+.materials__caption:nth-child(1) {
+  transition-delay: 220ms;
+}
+.materials__caption:nth-child(2) {
+  transition-delay: 310ms;
+}
+.materials__caption:nth-child(3) {
+  transition-delay: 400ms;
 }
 
 .materials__stage.is-inview .materials__caption {

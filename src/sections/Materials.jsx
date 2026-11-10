@@ -84,7 +84,7 @@ export default function Materials() {
               <h2 className="materials__title">
                 <span>The beauty</span>
                 <span>
-                  of <em className="materials__restraint">restraint.</em>
+                  of <em className="materials__restraint">restraint</em>
                 </span>
               </h2>
 
@@ -103,7 +103,7 @@ export default function Materials() {
             </a>
           </div>
 
-          <div className="materials__gallery">
+          <div className="materials__photos">
             {SHOTS.map((shot, index) => (
               <figure
                 key={shot.num}
@@ -113,15 +113,20 @@ export default function Materials() {
                 <div className="materials__frame">
                   <img
                     src={shot.src}
-                    alt={shot.alt}
+                    alt={`${shot.num} — ${shot.name}. ${shot.alt}`}
                     width={shot.width}
                     height={shot.height}
                   />
                 </div>
-                <figcaption className="materials__caption">
-                  {shot.num} — {shot.name}
-                </figcaption>
               </figure>
+            ))}
+          </div>
+
+          <div className="materials__captions" aria-hidden="true">
+            {SHOTS.map((shot) => (
+              <p key={shot.num} className="materials__caption">
+                {shot.num} — {shot.name}
+              </p>
             ))}
           </div>
         </div>
