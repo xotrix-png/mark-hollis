@@ -57,7 +57,7 @@ export default function Contact() {
 
       <div className="contact__shell">
         <header className="contact__bar">
-          <p className="contact__kicker">08 / Contact</p>
+          <p className="contact__kicker">07 / Contact</p>
         </header>
 
         <div
@@ -72,7 +72,9 @@ export default function Contact() {
                 <span>Let&apos;s create</span>
                 <span>something</span>
                 <span>
-                  <em className="contact__meaningful">meaningful</em>
+                  <em className="contact__meaningful">
+                    meanin<span className="contact__g-kern">g</span>ful
+                  </em>
                 </span>
               </h2>
 
@@ -110,7 +112,7 @@ export default function Contact() {
                 />
               </div>
               <figcaption className="contact__caption">
-                08 / 08 — The Gate Is Open
+                07 / 07 — The Gate Is Open
               </figcaption>
             </figure>
           </div>

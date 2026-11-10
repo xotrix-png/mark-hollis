@@ -1,5 +1,5 @@
 /*
-  Contact — 08 / Contact.
+  Contact — 07 / Contact.
   Left copy cols 1–7 (links span visual cols 1–4); col 8 spacer;
   right gate photo cols 9–12, top-aligned with the display headline.
   No end-of-sentence periods in this section.
@@ -151,6 +151,11 @@
   font-style: italic;
   font-weight: 500;
   color: var(--color-olive);
+}
+
+/* Pair kern: open colliding italic g–f in “meaningful” just enough */
+.contact__g-kern {
+  letter-spacing: 0.09em;
 }
 
 .contact__desc {
