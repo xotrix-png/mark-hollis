@@ -40,14 +40,16 @@ export default function Process() {
             <h2 className="process__title">
               <span>An idea</span>
               <span>
-                takes <em className="process__shape">shape.</em>
+                takes <em className="process__shape">shape</em>
               </span>
             </h2>
 
             <div className="process__aside">
               <p className="process__desc">
-                It starts as a line on tracing paper. Then a plan, a palette of
-                stone and plants, and finally a place you can walk through.
+                It starts as a line on tracing paper Then a plan,
+                <br />
+                a palette of stone and plants, and finally a place you can walk
+                through
               </p>
               <hr className="process__aside-rule" />
               <p className="process__meta-line">
