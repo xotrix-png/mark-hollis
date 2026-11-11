@@ -28,7 +28,6 @@ export default function Philosophy() {
                 alt="Pine tree casting a shadow on a board-formed concrete wall"
                 width={864}
                 height={1152}
-                loading="lazy"
                 decoding="async"
               />
             </div>
@@ -66,7 +65,6 @@ export default function Philosophy() {
               alt="Close study of moss on granite stone"
               width={1024}
               height={1024}
-              loading="lazy"
               decoding="async"
             />
           </figure>

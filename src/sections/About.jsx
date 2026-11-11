@@ -52,7 +52,6 @@ export default function About() {
                 alt="Mark Hollis, independent landscape architect"
                 width={864}
                 height={1152}
-                loading="lazy"
                 decoding="async"
               />
             </div>
