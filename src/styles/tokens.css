@@ -13,6 +13,7 @@
   --grid-gutter: 0;
   --rule-color: rgb(41 43 39 / 0.14);
   --shell-pad-block: clamp(1.35rem, 2vw, 1.85rem);
+  --section-gap: 60px; /* consistent space between main page sections */
 
   /* Spacing */
   --space-2xs: 0.25rem;
