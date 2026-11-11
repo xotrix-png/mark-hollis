@@ -28,6 +28,8 @@ export default function Philosophy() {
                 alt="Pine tree casting a shadow on a board-formed concrete wall"
                 width={864}
                 height={1152}
+                loading="lazy"
+                decoding="async"
               />
             </div>
             <figcaption className="philosophy__caption">
@@ -60,10 +62,12 @@ export default function Philosophy() {
         <footer className="philosophy__foot">
           <figure className="philosophy__moss">
             <img
-              src="/images/philosophy-moss.png"
+              src="/images/philosophy-moss.jpg"
               alt="Close study of moss on granite stone"
               width={1024}
               height={1024}
+              loading="lazy"
+              decoding="async"
             />
           </figure>
         </footer>

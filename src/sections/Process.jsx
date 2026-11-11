@@ -27,6 +27,8 @@ export default function Process() {
               alt="Stone path through a garden toward a white farmhouse"
               width={1280}
               height={720}
+              loading="lazy"
+              decoding="async"
             />
           </figure>
 
@@ -61,6 +63,8 @@ export default function Process() {
             alt="Flat lay of stone, moss, pine, and bark material samples"
             width={1024}
             height={1024}
+            loading="lazy"
+            decoding="async"
           />
         </figure>
         <p className="process__caption">05 / 09 — Stone, Moss, Pine</p>

@@ -10,24 +10,32 @@ const STAGES = [
     name: 'Observation',
     image: '/images/approach-observation.jpg',
     alt: 'Wild misty undeveloped site among trees at dawn',
+    width: 1152,
+    height: 864,
   },
   {
     num: '02',
     name: 'Concept',
     image: '/images/approach-concept.jpg',
     alt: 'Hand-drawn landscape plan sketch with path, trees, and pond',
+    width: 864,
+    height: 1152,
   },
   {
     num: '03',
     name: 'Design',
     image: '/images/approach-design.jpg',
     alt: 'Technical landscape plan with material samples on a desk',
+    width: 1152,
+    height: 864,
   },
   {
     num: '04',
     name: 'Realization',
     image: '/images/approach-realization.jpg',
     alt: 'Finished garden path with birch trees',
+    width: 1152,
+    height: 864,
   },
 ]
 
@@ -40,20 +48,6 @@ export default function Approach() {
   useEffect(() => {
     const frame = requestAnimationFrame(() => setReady(true))
     return () => cancelAnimationFrame(frame)
-  }, [])
-
-  // Preload all four stage photos so hover crossfades without layout hitch
-  useEffect(() => {
-    const loaders = STAGES.map((step) => {
-      const img = new Image()
-      img.src = step.image
-      return img
-    })
-    return () => {
-      loaders.forEach((img) => {
-        img.src = ''
-      })
-    }
   }, [])
 
   const onIntersect = useEffectEvent((isIntersecting) => {
@@ -104,8 +98,9 @@ export default function Approach() {
                 key={step.num}
                 src={step.image}
                 alt={index === active ? step.alt : ''}
-                width={864}
-                height={1152}
+                width={step.width}
+                height={step.height}
+                decoding="async"
                 className={
                   index === active
                     ? 'approach__photo is-active'

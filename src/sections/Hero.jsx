@@ -65,6 +65,7 @@ export default function Hero() {
               width={1280}
               height={720}
               fetchPriority="high"
+              decoding="async"
             />
           </figure>
         </div>
@@ -77,6 +78,7 @@ export default function Hero() {
             alt="Dry grass between rocks with misty residence beyond"
             width={864}
             height={1152}
+            decoding="async"
           />
         </figure>
         <p className="hero__project">01 / 06 — Private Residence</p>

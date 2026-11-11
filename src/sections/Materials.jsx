@@ -110,6 +110,8 @@ export default function Materials() {
                     alt={`${shot.num} — ${shot.name}. ${shot.alt}`}
                     width={shot.width}
                     height={shot.height}
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </figure>

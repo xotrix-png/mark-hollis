@@ -103,6 +103,8 @@ export default function Contact() {
                   alt="Open wooden gate in a stone wall leading into a misty garden path"
                   width={864}
                   height={1152}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <figcaption className="contact__caption">

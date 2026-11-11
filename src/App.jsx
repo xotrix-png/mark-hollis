@@ -13,7 +13,8 @@ export default function App() {
       <SiteGrid />
       <Hero />
       <Philosophy />
-      {/* Selected Work (#work) not built yet — About → Materials → Contact follow Philosophy */}
+      {/* Selected Work not built yet — zero-height target so nav Work (#work) resolves */}
+      <div id="work" className="site-anchor" tabIndex={-1} />
       <About />
       <Approach />
       <Process />
