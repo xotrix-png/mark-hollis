@@ -10,8 +10,6 @@ export default function HeroNav() {
         </p>
       </div>
 
-      <p className="hero-nav__locale">©2026 — Hudson Valley, NY</p>
-
       <nav className="hero-nav__links" aria-label="Primary">
         <a href="#work">Work</a>
         <span aria-hidden="true">,</span>

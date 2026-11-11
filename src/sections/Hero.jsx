@@ -80,6 +80,7 @@ export default function Hero() {
           />
         </figure>
         <p className="hero__project">01 / 06 — Private Residence</p>
+        <p className="hero__locale">©2026 — Hudson Valley, NY</p>
       </div>
     </section>
   )
