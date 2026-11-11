@@ -73,7 +73,9 @@ export default function Contact() {
               </h2>
 
               <p className="contact__desc">
-                Have a place in mind? Let&apos;s talk about what it could become
+                Have a place in mind?
+                <br />
+                Let&apos;s talk about what it could become
               </p>
 
               <div className="contact__links">
