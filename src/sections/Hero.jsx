@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import HeroNav from '../components/HeroNav.jsx'
 import '../styles/hero.css'
 
 function HeadlineLines() {
@@ -33,8 +32,6 @@ export default function Hero() {
       aria-label="Introduction"
     >
       <div className="hero__shell">
-        <HeroNav />
-
         <div className="hero__stage">
           <div className="hero__copy">
             <div className="hero__title-split">

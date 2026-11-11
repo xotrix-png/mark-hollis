@@ -1,4 +1,5 @@
 import SiteGrid from './components/SiteGrid.jsx'
+import HeroNav from './components/HeroNav.jsx'
 import Hero from './sections/Hero.jsx'
 import Philosophy from './sections/Philosophy.jsx'
 import About from './sections/About.jsx'
@@ -11,6 +12,7 @@ export default function App() {
   return (
     <main className="site">
       <SiteGrid />
+      <HeroNav />
       <Hero />
       <Philosophy />
       {/* Selected Work not built yet — zero-height target so nav Work (#work) resolves */}
