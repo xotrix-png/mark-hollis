@@ -26,7 +26,9 @@
   min-height: inherit;
   margin-inline: auto;
   padding-inline: var(--margin-inline);
-  padding-block: var(--shell-pad-block);
+  padding-top: var(--shell-pad-block);
+  /* Captions sit near the floor — keep only a tight bottom pad */
+  padding-bottom: 0.75rem;
 }
 
 .materials__bar {
@@ -59,12 +61,14 @@
 .materials__stage {
   display: grid;
   grid-template-columns: repeat(var(--mat-cols), minmax(0, 1fr));
-  grid-template-rows: auto auto;
+  /* Photo/copy row absorbs leftover 100vh; captions stay content-tall (was stretching ~250px) */
+  grid-template-rows: minmax(0, 1fr) auto;
   align-items: stretch;
+  align-content: stretch;
   column-gap: 0;
   row-gap: 0.7rem;
   margin-top: clamp(1.35rem, 3.2vh, 2.5rem);
-  margin-bottom: clamp(0.75rem, 1.8vh, 1.35rem);
+  margin-bottom: 0;
   min-height: 0;
 }
 

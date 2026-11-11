@@ -13,7 +13,19 @@
   --grid-gutter: 0;
   --rule-color: rgb(41 43 39 / 0.14);
   --shell-pad-block: clamp(1.35rem, 2vw, 1.85rem);
-  --section-gap: 60px; /* consistent space between main page sections */
+
+  /*
+    Inter-section rhythm — content-edge gaps, not one flat box gap.
+    Tuned so junctions land near the Hero→Philosophy reference (~90px
+    content-to-content when the previous block ends flush).
+  */
+  --gap-hero-philosophy: 60px;
+  --gap-philosophy-about: 60px;
+  --gap-about-approach: 60px;
+  --gap-approach-process: 60px;
+  --gap-process-materials: 60px;
+  /* Materials captions sit near the floor — match ~90px content gap */
+  --gap-materials-contact: 56px;
 
   /* Spacing */
   --space-2xs: 0.25rem;

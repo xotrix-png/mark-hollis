@@ -22,13 +22,37 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Shared rhythm between Hero → … → Contact (internal section layout untouched) */
+/* Shared rhythm between Hero → … → Contact (per-junction margins, not one gap) */
 main.site {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--section-gap);
+  gap: 0;
   background-color: var(--color-ivory);
+}
+
+main.site > #philosophy {
+  margin-top: var(--gap-hero-philosophy);
+}
+
+main.site > #about {
+  margin-top: var(--gap-philosophy-about);
+}
+
+main.site > #approach {
+  margin-top: var(--gap-about-approach);
+}
+
+main.site > #process {
+  margin-top: var(--gap-approach-process);
+}
+
+main.site > #materials {
+  margin-top: var(--gap-process-materials);
+}
+
+main.site > #contact {
+  margin-top: var(--gap-materials-contact);
 }
 
 /*
