@@ -578,7 +578,7 @@
     flex-direction: column;
     align-items: stretch;
     height: auto;
-    min-height: 0;
+    min-height: auto;
     padding: 1.15rem 0 1.35rem;
     opacity: 1;
     transform: none;
@@ -594,18 +594,24 @@
   }
 
   .approach__stage-shot {
+    position: relative;
     display: block;
+    flex: 0 0 auto;
     width: 100%;
+    height: auto;
     margin-top: 0.85rem;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 1 / 1;
     overflow: hidden;
   }
 
   .approach__stage-shot img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
+    max-width: none;
     object-fit: cover;
-    object-position: 50% 45%;
+    object-position: 50% 42%;
   }
 
   .approach__stage-row.is-active .approach__name,
