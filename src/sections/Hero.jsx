@@ -69,17 +69,17 @@ export default function Hero() {
           </figure>
         </div>
 
-        <footer className="hero__foot">
-          <figure className="hero__detail">
-            <img
-              src="/images/hero-detail-grass.jpg"
-              alt="Dry grass between rocks with misty residence beyond"
-              width={864}
-              height={1152}
-            />
-          </figure>
-          <p className="hero__project">01 / 06 — Private Residence</p>
-        </footer>
+        {/* Spacer only — detail/label abspos to shell (never under a transforming foot) */}
+        <div className="hero__foot" aria-hidden="true" />
+        <figure className="hero__detail">
+          <img
+            src="/images/hero-detail-grass.jpg"
+            alt="Dry grass between rocks with misty residence beyond"
+            width={864}
+            height={1152}
+          />
+        </figure>
+        <p className="hero__project">01 / 06 — Private Residence</p>
       </div>
     </section>
   )

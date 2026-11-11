@@ -297,22 +297,9 @@
 
 /* ——— Bottom ——— */
 .hero__foot {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  align-items: end;
-  column-gap: 0;
-  /* Reserve square thumb height so stage doesn’t collide */
+  /* Height reserve only — do NOT put transform here (creates abspos CB) */
   min-height: var(--detail-w);
-  opacity: 0;
-  transform: translateY(0.35rem);
-  transition:
-    opacity var(--duration-load) var(--ease-out) 180ms,
-    transform var(--duration-load) var(--ease-out) 180ms;
-}
-
-.hero.is-ready .hero__foot {
-  opacity: 1;
-  transform: none;
+  pointer-events: none;
 }
 
 /*
@@ -320,6 +307,7 @@
   right edge on the col-2 grid rule. Square + cover.
   Absolute vs .hero__shell (position:relative) — pull left by side-gap
   so left:0 of the shell maps to the viewport edge when max-width centers.
+  Sibling of foot (not a child) so entrance motion never retargets CB.
 */
 .hero__detail {
   position: absolute;
@@ -328,11 +316,19 @@
   z-index: 2;
   width: var(--detail-w);
   aspect-ratio: 1 / 1;
+  margin: 0;
   overflow: hidden;
   border-radius: 0;
+  opacity: 0;
+  transition: opacity var(--duration-load) var(--ease-out) 180ms;
+}
+
+.hero.is-ready .hero__detail {
+  opacity: 1;
 }
 
 .hero__detail img {
+  display: block;
   width: 100%;
   height: 100%;
   /* Portrait grass source → cover: dry grass + rocks + misty building */
@@ -356,6 +352,12 @@
   color: var(--color-graphite);
   line-height: 1;
   white-space: nowrap;
+  opacity: 0;
+  transition: opacity var(--duration-load) var(--ease-out) 180ms;
+}
+
+.hero.is-ready .hero__project {
+  opacity: 1;
 }
 
 @media (max-width: 1440px) {
@@ -386,7 +388,8 @@
   .hero-nav,
   .hero__copy,
   .hero__main,
-  .hero__foot,
+  .hero__detail,
+  .hero__project,
   .hero-nav__cta span {
     transition: none !important;
     transform: none !important;

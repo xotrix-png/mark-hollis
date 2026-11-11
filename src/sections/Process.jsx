@@ -53,17 +53,17 @@ export default function Process() {
           </div>
         </div>
 
-        <footer className="process__foot">
-          <figure className="process__detail">
-            <img
-              src="/images/process-materials.jpg"
-              alt="Flat lay of stone, moss, pine, and bark material samples"
-              width={1024}
-              height={1024}
-            />
-          </figure>
-          <p className="process__caption">05 / 09 — Stone, Moss, Pine</p>
-        </footer>
+        {/* Spacer only — detail/caption abspos to shell (never under a transforming foot) */}
+        <div className="process__foot" aria-hidden="true" />
+        <figure className="process__detail">
+          <img
+            src="/images/process-materials.jpg"
+            alt="Flat lay of stone, moss, pine, and bark material samples"
+            width={1024}
+            height={1024}
+          />
+        </figure>
+        <p className="process__caption">05 / 09 — Stone, Moss, Pine</p>
       </div>
     </section>
   )
