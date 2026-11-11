@@ -27,8 +27,8 @@
   margin-inline: auto;
   padding-inline: var(--margin-inline);
   padding-top: var(--shell-pad-block);
-  /* Captions sit near the floor — keep only a tight bottom pad */
-  padding-bottom: 0.75rem;
+  /* No floor pad — marker gap is caption-row bottom → 07 / CONTACT */
+  padding-bottom: 0;
 }
 
 .materials__bar {

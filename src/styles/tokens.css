@@ -24,8 +24,8 @@
   --gap-about-approach: 60px;
   --gap-approach-process: 60px;
   --gap-process-materials: 60px;
-  /* Materials captions sit near the floor — match ~90px content gap */
-  --gap-materials-contact: 56px;
+  /* Same box gap as other junctions once materials bottom pad is 0 */
+  --gap-materials-contact: 60px;
 
   /* Spacing */
   --space-2xs: 0.25rem;
