@@ -49,7 +49,7 @@ export default function About() {
             <div className="about__portrait-frame">
               <img
                 src="/images/about-portrait.jpg"
-                alt="Mark Vetrov, independent landscape architect"
+                alt="Mark Hollis, independent landscape architect"
                 width={864}
                 height={1152}
                 loading="lazy"
@@ -57,12 +57,12 @@ export default function About() {
               />
             </div>
             <figcaption className="about__caption">
-              Mark Vetrov / Independent Landscape Architect
+              Mark Hollis / Independent Landscape Architect
             </figcaption>
           </figure>
 
           {/* Left edge on markup grid line (rule 5 / col 6) */}
-          <p className="about__signature">Mark Vetrov</p>
+          <p className="about__signature">Mark Hollis</p>
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
-# MARK VETROV
+# MARK HOLLIS
 
-Premium portfolio for MARK VETROV — independent landscape architect focused on private gardens.
+Premium portfolio for MARK HOLLIS — independent landscape architect focused on private gardens.
 
 Phase 1 delivers the Hero only: editorial typography, asymmetric layout, full-bleed photography, and restrained motion.
 

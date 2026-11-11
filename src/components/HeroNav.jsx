@@ -3,7 +3,7 @@ export default function HeroNav() {
     <header className="hero-nav">
       <div className="hero-nav__brand-block">
         <a className="hero-nav__brand" href="#top">
-          Mark Vetrov
+          Mark Hollis
         </a>
         <p className="hero-nav__role">
           (Landscape Architect · Private Gardens)
