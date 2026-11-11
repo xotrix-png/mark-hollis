@@ -5,6 +5,8 @@
   --content-w: calc(var(--shell-w) - 2 * var(--margin-inline));
   --col: calc(var(--content-w) / 12);
   --detail-w: calc(var(--side-gap) + var(--margin-inline) + var(--col));
+  /* Cormorant cap sidebearing — hang left stack flush to grid rule 0 */
+  --hero-optical-left: calc(var(--fs-h1) * 0.06);
 
   position: relative;
   isolation: isolate;
@@ -50,6 +52,8 @@
   flex-direction: column;
   gap: 0.28rem;
   padding-right: 0.75rem;
+  /* Match title optical flush to leftmost grid rule */
+  margin-left: calc(-1 * var(--hero-optical-left));
 }
 
 .hero-nav__brand {
@@ -164,6 +168,8 @@
   position: relative;
   width: 100%;
   overflow: visible;
+  /* Hang cap sidebearing so S/C ink sits on grid rule 0 */
+  margin-left: calc(-1 * var(--hero-optical-left));
 }
 
 .hero__title {
@@ -190,9 +196,16 @@
 .hero__title--graphite {
   position: relative;
   color: var(--color-graphite);
-  /* Same --hero-photo-start as .hero__main left (100% → stage-sized title box) */
+  /* Same --hero-photo-start as .hero__main left (100% → stage-sized title box).
+     Optical hang shifts the box left — widen graphite / delay ivory by the same
+     length so the dual-tone cut stays locked to the photo edge. */
   /* Horizontal clip only; generous vertical inset so descenders aren’t sheared */
-  clip-path: inset(-0.5em calc(100% - var(--hero-photo-start)) -0.5em 0);
+  clip-path: inset(
+    -0.5em
+    calc(100% - var(--hero-photo-start) - var(--hero-optical-left))
+    -0.5em
+    0
+  );
 }
 
 .hero__title--ivory {
@@ -202,7 +215,9 @@
   margin: 0;
   overflow: visible;
   color: var(--color-ivory);
-  clip-path: inset(-0.5em 0 -0.5em var(--hero-photo-start));
+  clip-path: inset(
+    -0.5em 0 -0.5em calc(var(--hero-photo-start) - var(--hero-optical-left))
+  );
   pointer-events: none;
 }
 
@@ -222,6 +237,7 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
+  margin-left: calc(-1 * var(--hero-optical-left));
   gap: 0.85rem;
   max-width: 26.5rem;
 }
