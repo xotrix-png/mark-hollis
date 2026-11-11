@@ -1,0 +1,258 @@
+/*
+  Philosophy uses the SAME fluid grid contract as Hero:
+  - shell: min(100%, max-width) + margin-inline padding
+  - stage/foot: repeat(12, minmax(0, 1fr)) — edges from fr tracks, not 100vw px
+  Column fractions live as unitless vars (like --hero-photo-col).
+  12-col hairlines live on site-level SiteGrid (continuous through gaps).
+*/
+.philosophy {
+  position: relative;
+  isolation: isolate;
+  /* Hug content — trailing 100vh air was inflating Philosophy→About */
+  background-color: transparent;
+  color: var(--color-graphite);
+  overflow: clip;
+}
+
+.philosophy__shell {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  /* auto rows + start: don’t park the moss on the viewport floor via 1fr */
+  grid-template-rows: auto auto auto;
+  align-content: start;
+  width: min(100%, var(--max-width));
+  margin-inline: auto;
+  padding-inline: var(--margin-inline);
+  padding-top: var(--shell-pad-block);
+  /* No floor pad — next junction margin owns the content-edge gap */
+  padding-bottom: 0;
+}
+
+/* ——— Top meta ——— */
+.philosophy__bar {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  align-items: baseline;
+  opacity: 0;
+  transform: translateY(-0.3rem);
+  transition:
+    opacity var(--duration-load) var(--ease-out),
+    transform var(--duration-load) var(--ease-out);
+}
+
+.philosophy.is-ready .philosophy__bar {
+  opacity: 1;
+  transform: none;
+}
+
+.philosophy__kicker {
+  grid-column: 1 / span 4;
+  margin: 0;
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--color-graphite);
+}
+
+/* ——— Stage (Hero-style column fraction vars) ——— */
+.philosophy__stage {
+  --phil-cols: var(--grid-columns);
+  --phil-study-cols: 3;
+  --phil-copy-start: 5;
+  --phil-copy-cols: 8;
+  /* Body/hairline: visual cols 8–11 → inset 3 of copy, span 4 of copy */
+  --phil-body-inset: 3;
+  --phil-body-cols: 4;
+  /* Title line 1 inset one col within copy (visual col 6) */
+  --phil-title-inset: 1;
+
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--phil-cols), minmax(0, 1fr));
+  align-items: start;
+  column-gap: 0;
+  margin-top: clamp(1.15rem, 2.8vh, 1.85rem);
+  margin-bottom: clamp(0.85rem, 2vh, 1.35rem);
+  opacity: 0;
+  transform: translateY(0.65rem);
+  transition:
+    opacity var(--duration-load) var(--ease-out) 80ms,
+    transform var(--duration-load) var(--ease-out) 80ms;
+}
+
+.philosophy.is-ready .philosophy__stage {
+  opacity: 1;
+  transform: none;
+}
+
+.philosophy__study {
+  grid-column: 1 / span var(--phil-study-cols);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin: 0;
+  min-width: 0;
+}
+
+.philosophy__study-frame {
+  /* Full 3-col width (grid snap); cap height so the section fits ~1080 */
+  width: 100%;
+  aspect-ratio: 3 / 5;
+  max-height: 52vh;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.philosophy__study-frame img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 48% 42%;
+  border-radius: 0;
+}
+
+.philosophy__caption {
+  margin: 0;
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  line-height: 1.35;
+  color: var(--color-graphite);
+}
+
+.philosophy__copy {
+  grid-column: var(--phil-copy-start) / span var(--phil-copy-cols);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.15rem, 2.4vh, 1.75rem);
+  min-width: 0;
+  padding-top: clamp(0.2rem, 0.8vh, 0.65rem);
+}
+
+.philosophy__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 500;
+  line-height: var(--lh-h2);
+  letter-spacing: -0.015em;
+  color: var(--color-graphite);
+}
+
+.philosophy__title > span {
+  display: block;
+  white-space: nowrap;
+}
+
+.philosophy__title > span:first-child {
+  margin-left: calc(100% * var(--phil-title-inset) / var(--phil-copy-cols));
+}
+
+.philosophy__title-line2 {
+  margin-left: 0;
+}
+
+.philosophy__garden {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-olive);
+}
+
+.philosophy__aside {
+  margin-left: calc(100% * var(--phil-body-inset) / var(--phil-copy-cols));
+  width: calc(100% * var(--phil-body-cols) / var(--phil-copy-cols));
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.philosophy__desc {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-philosophy-body);
+  font-weight: 500;
+  line-height: var(--lh-philosophy-body);
+  color: var(--color-graphite);
+}
+
+.philosophy__rule-line {
+  width: 100%;
+  height: 0;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid rgb(41 43 39 / 0.55);
+}
+
+.philosophy__meta-line {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta-line);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+/* ——— Foot: moss on same 12-col fr grid as stage (rules 9→11 = cols 10–11) ——— */
+.philosophy__foot {
+  --phil-moss-start: 10;
+  --phil-moss-cols: 2;
+
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  align-items: start;
+  column-gap: 0;
+  margin-top: 0;
+  opacity: 0;
+  transform: translateY(0.35rem);
+  transition:
+    opacity var(--duration-load) var(--ease-out) 160ms,
+    transform var(--duration-load) var(--ease-out) 160ms;
+}
+
+.philosophy.is-ready .philosophy__foot {
+  opacity: 1;
+  transform: none;
+}
+
+.philosophy__moss {
+  grid-column: var(--phil-moss-start) / span var(--phil-moss-cols);
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.philosophy__moss img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: 50% 45%;
+  border-radius: 0;
+}
+
+@media (max-width: 1280px) {
+  .philosophy__title {
+    font-size: clamp(3.15rem, 4.6vw, 4.35rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .philosophy__bar,
+  .philosophy__stage,
+  .philosophy__foot {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

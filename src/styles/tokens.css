@@ -1,0 +1,64 @@
+:root {
+  /* Color */
+  --color-graphite: #292b27;
+  --color-olive: #626a50;
+  --color-ivory: #e8e3d9;
+  --color-warm-grey: #b5aea1;
+  --color-taupe: #a28b70;
+
+  /* Layout — desktop editorial frame (Hero + Philosophy share these) */
+  --margin-inline: clamp(2.5rem, 5.2vw, 6.25rem); /* ~40–100px */
+  --max-width: 111.25rem; /* 1780px */
+  --grid-columns: 12;
+  --grid-gutter: 0;
+  --rule-color: rgb(41 43 39 / 0.14);
+  --shell-pad-block: clamp(1.35rem, 2vw, 1.85rem);
+
+  /*
+    Inter-section rhythm — content-edge gaps, not one flat box gap.
+    Tuned so junctions land near the Hero→Philosophy reference (~90px
+    content-to-content when the previous block ends flush).
+  */
+  --gap-hero-philosophy: 60px;
+  --gap-philosophy-about: 60px;
+  --gap-about-approach: 60px;
+  --gap-approach-process: 60px;
+  --gap-process-materials: 60px;
+  /* Same box gap as other junctions once materials bottom pad is 0 */
+  --gap-materials-contact: 60px;
+
+  /* Spacing */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1.25rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --space-3xl: 6.5rem;
+
+  /* Type */
+  --font-display: 'Cormorant Garamond', 'Times New Roman', Times, serif;
+  --font-sans: 'Manrope', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  --font-signature: 'Mrs Saint Delafield', 'Segoe Script', cursive;
+
+  --fs-h1: clamp(3.75rem, 5.4vw, 6rem); /* ~60–96px */
+  --lh-h1: 1.08; /* ~30px tighter total than 1.18+0.08em spacing */
+  --fs-h2: clamp(3.65rem, 5.05vw, 5.5rem); /* philosophy display — denser */
+  --lh-h2: 1.05;
+  --fs-philosophy-body: clamp(1.125rem, 1.12vw, 1.3125rem); /* ~18–21px */
+  --lh-philosophy-body: 1.38;
+  --fs-desc: clamp(1.0625rem, 0.98vw, 1.125rem); /* 17–18px */
+  --lh-desc: 1.35;
+  --fs-meta-line: clamp(0.625rem, 0.62vw, 0.6875rem); /* ~10–11px mono caps */
+  --fs-nav: clamp(0.6875rem, 0.68vw, 0.75rem); /* 11–12px */
+  --fs-meta: clamp(0.625rem, 0.62vw, 0.6875rem); /* 10–11px */
+  --tracking-caps: 0.12em;
+  --tracking-mono: 0.14em;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-load: 780ms;
+  --duration-hover: 300ms;
+}

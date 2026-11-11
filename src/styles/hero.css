@@ -1,0 +1,429 @@
+.hero {
+  /* Shared measures for left-bleed detail thumb */
+  --shell-w: min(100vw, var(--max-width));
+  --side-gap: calc((100vw - var(--shell-w)) / 2);
+  --content-w: calc(var(--shell-w) - 2 * var(--margin-inline));
+  --col: calc(var(--content-w) / 12);
+  --detail-w: calc(var(--side-gap) + var(--margin-inline) + var(--col));
+  /* Cormorant cap sidebearing — hang left stack flush to grid rule 0 */
+  --hero-optical-left: calc(var(--fs-h1) * 0.06);
+
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: transparent;
+  color: var(--color-graphite);
+  overflow: clip;
+}
+
+.hero__shell {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  width: min(100%, var(--max-width));
+  min-height: inherit;
+  margin-inline: auto;
+  padding-inline: var(--margin-inline);
+  padding-block: var(--shell-pad-block);
+}
+
+/* ——— Top bar ——— */
+.hero-nav {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-items: start;
+  opacity: 0;
+  transform: translateY(-0.3rem);
+  transition:
+    opacity var(--duration-load) var(--ease-out),
+    transform var(--duration-load) var(--ease-out);
+}
+
+.hero.is-ready .hero-nav {
+  opacity: 1;
+  transform: none;
+}
+
+.hero-nav__brand-block {
+  grid-column: 1 / span 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+  padding-right: 0.75rem;
+  /* Match title optical flush to leftmost grid rule */
+  margin-left: calc(-1 * var(--hero-optical-left));
+}
+
+.hero-nav__brand {
+  font-size: var(--fs-nav);
+  font-weight: 700;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+
+.hero-nav__role {
+  font-size: var(--fs-meta);
+  font-weight: 400;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: rgb(41 43 39 / 0.58);
+  line-height: 1.35;
+}
+
+.hero-nav__links {
+  grid-column: 8 / span 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.28rem;
+  padding-top: 0.1rem;
+  font-size: var(--fs-nav);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
+
+.hero-nav__links a {
+  transition: color var(--duration-hover) var(--ease-out);
+}
+
+.hero-nav__links a:hover {
+  color: var(--color-olive);
+}
+
+.hero-nav__links span {
+  color: rgb(41 43 39 / 0.4);
+}
+
+.hero-nav__cta {
+  grid-column: 11 / span 2;
+  justify-self: end;
+  padding-top: 0.1rem;
+  font-size: var(--fs-nav);
+  font-weight: 600;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: color var(--duration-hover) var(--ease-out);
+}
+
+.hero-nav__cta span {
+  display: inline-block;
+  transition: transform var(--duration-hover) var(--ease-out);
+}
+
+.hero-nav__cta:hover {
+  color: var(--color-olive);
+}
+
+.hero-nav__cta:hover span {
+  transform: translateX(0.25rem);
+}
+
+/* ——— Stage ——— */
+.hero__stage {
+  /* Photo + headline clip share this column start (no one-off px).
+     ~4.81/12 ≈ after “PE” (with tiny o kern) at 1920. */
+  --hero-cols: 12;
+  --hero-photo-col: 4.81;
+  --hero-copy-cols: 6;
+  --hero-photo-start: calc(100% * var(--hero-photo-col) / var(--hero-cols));
+
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  min-height: 0;
+  margin-top: clamp(1.5rem, 3.5vh, 2.75rem);
+  margin-bottom: clamp(1.1rem, 2.2vh, 1.75rem);
+}
+
+.hero__copy {
+  position: relative;
+  z-index: 2;
+  grid-column: 1 / span 6;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(1.25rem, 2.2vh, 1.75rem);
+  /* No horizontal padding — title width must equal stage width for clip lock */
+  padding-bottom: clamp(1.5rem, 4vh, 3rem);
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition:
+    opacity var(--duration-load) var(--ease-out) 70ms,
+    transform var(--duration-load) var(--ease-out) 70ms;
+}
+
+.hero.is-ready .hero__copy {
+  opacity: 1;
+  transform: none;
+}
+
+/* Dual-tone H1: graphite | ivory split exactly at photo edge */
+.hero__title-split {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  /* Hang cap sidebearing so S/C ink sits on grid rule 0 */
+  margin-left: calc(-1 * var(--hero-optical-left));
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 500;
+  line-height: var(--lh-h1);
+  letter-spacing: -0.015em;
+  overflow: visible;
+  /* Full stage width so clip % matches --hero-photo-start on .hero__main */
+  width: calc(100% * var(--hero-cols) / var(--hero-copy-cols));
+}
+
+.hero__title > span {
+  display: block;
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.hero__title > span + span {
+  margin-top: 0.04em; /* keep tiny y→C air after ~30px leading tighten */
+}
+
+.hero__title--graphite {
+  position: relative;
+  color: var(--color-graphite);
+  /* Same --hero-photo-start as .hero__main left (100% → stage-sized title box).
+     Optical hang shifts the box left — widen graphite / delay ivory by the same
+     length so the dual-tone cut stays locked to the photo edge. */
+  /* Horizontal clip only; generous vertical inset so descenders aren’t sheared */
+  clip-path: inset(
+    -0.5em
+    calc(100% - var(--hero-photo-start) - var(--hero-optical-left))
+    -0.5em
+    0
+  );
+}
+
+.hero__title--ivory {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 0;
+  overflow: visible;
+  color: var(--color-ivory);
+  clip-path: inset(
+    -0.5em 0 -0.5em calc(var(--hero-photo-start) - var(--hero-optical-left))
+  );
+  pointer-events: none;
+}
+
+.hero__nature {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-olive);
+}
+
+/* Tiny optical kern: open pe→o without moving the photo cut */
+.hero__people-o {
+  margin-left: 0.04em;
+}
+
+.hero__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-left: calc(-1 * var(--hero-optical-left));
+  gap: 0.85rem;
+  max-width: 26.5rem;
+}
+
+.hero__desc {
+  font-family: var(--font-sans);
+  font-size: var(--fs-desc);
+  font-weight: 500;
+  line-height: var(--lh-desc);
+  color: var(--color-graphite);
+}
+
+.hero__aside-rule {
+  width: 100%;
+  height: 0;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid rgb(41 43 39 / 0.55);
+}
+
+.hero__meta-line {
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta-line);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+/*
+  Main photo: starts at --hero-photo-start (~7 cols to right edge).
+  Same variable drives the H1 ivory clip-path.
+*/
+.hero__main {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: var(--hero-photo-start);
+  width: calc(
+    100% * (var(--hero-cols) - var(--hero-photo-col)) / var(--hero-cols) +
+      var(--margin-inline) + (100vw - min(100vw, var(--max-width))) / 2
+  );
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0;
+  opacity: 0;
+  transition: opacity var(--duration-load) var(--ease-out) 120ms;
+}
+
+.hero.is-ready .hero__main {
+  opacity: 1;
+}
+
+.hero__main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+  border-radius: 0;
+}
+
+/* ——— Bottom ——— */
+.hero__foot {
+  /* Height reserve only — do NOT put transform here (creates abspos CB) */
+  min-height: var(--detail-w);
+  pointer-events: none;
+}
+
+/*
+  Detail thumb: full-bleed left + bottom to the viewport edges,
+  right edge on the col-2 grid rule. Square + cover.
+  Absolute vs .hero__shell (position:relative) — pull left by side-gap
+  so left:0 of the shell maps to the viewport edge when max-width centers.
+  Sibling of foot (not a child) so entrance motion never retargets CB.
+*/
+.hero__detail {
+  position: absolute;
+  left: calc(-1 * var(--side-gap));
+  bottom: 0;
+  z-index: 2;
+  width: var(--detail-w);
+  aspect-ratio: 1 / 1;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0;
+  opacity: 0;
+  transition: opacity var(--duration-load) var(--ease-out) 180ms;
+}
+
+.hero.is-ready .hero__detail {
+  opacity: 1;
+}
+
+.hero__detail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* Portrait grass source → cover: dry grass + rocks + misty building */
+  object-fit: cover;
+  object-position: 50% 28%;
+  border-radius: 0;
+}
+
+/* Flush left to nearest grid rule on its right (rule i=2 / col-3 start) */
+.hero__project {
+  position: absolute;
+  left: calc(var(--margin-inline) + 2 * var(--col));
+  bottom: var(--shell-pad-block);
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-graphite);
+  line-height: 1;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity var(--duration-load) var(--ease-out) 180ms;
+}
+
+.hero.is-ready .hero__project {
+  opacity: 1;
+}
+
+/* Far-right grid rule, same baseline as project label */
+.hero__locale {
+  position: absolute;
+  right: var(--margin-inline);
+  bottom: var(--shell-pad-block);
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: rgb(41 43 39 / 0.68);
+  line-height: 1;
+  white-space: nowrap;
+  text-align: right;
+  opacity: 0;
+  transition: opacity var(--duration-load) var(--ease-out) 180ms;
+}
+
+.hero.is-ready .hero__locale {
+  opacity: 1;
+}
+
+@media (max-width: 1440px) {
+  .hero-nav__links {
+    grid-column: 7 / span 3;
+  }
+
+  .hero-nav__cta {
+    grid-column: 10 / span 3;
+  }
+}
+
+@media (max-width: 1280px) {
+  .hero__title {
+    font-size: clamp(3.15rem, 4.8vw, 4.5rem);
+  }
+
+  .hero__copy {
+    gap: 1.15rem;
+  }
+
+  .hero__aside {
+    max-width: 24rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-nav,
+  .hero__copy,
+  .hero__main,
+  .hero__detail,
+  .hero__project,
+  .hero__locale,
+  .hero-nav__cta span {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

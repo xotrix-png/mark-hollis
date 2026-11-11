@@ -1,0 +1,283 @@
+/*
+  Process — Hero mirror: left-bleed main photo, right-aligned copy,
+  bottom-right materials square. Same tokens / 12-col / photo geometry.
+*/
+.process {
+  --shell-w: min(100vw, var(--max-width));
+  --side-gap: calc((100vw - var(--shell-w)) / 2);
+  --content-w: calc(var(--shell-w) - 2 * var(--margin-inline));
+  --col: calc(var(--content-w) / 12);
+  --detail-w: calc(var(--side-gap) + var(--margin-inline) + var(--col));
+
+  /* Mirror of Hero --hero-photo-col: 4.81 */
+  --process-cols: 12;
+  --process-photo-col: 4.81;
+  --process-photo-end: calc(
+    100% * var(--process-photo-col) / var(--process-cols)
+  );
+
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background-color: transparent;
+  color: var(--color-graphite);
+  overflow: clip;
+}
+
+.process__shell {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  width: min(100%, var(--max-width));
+  min-height: inherit;
+  margin-inline: auto;
+  padding-inline: var(--margin-inline);
+  padding-block: var(--shell-pad-block);
+}
+
+.process__bar {
+  display: grid;
+  grid-template-columns: repeat(var(--process-cols), minmax(0, 1fr));
+  align-items: baseline;
+  /* Match Hero nav block height so the stage photo span stays comparable */
+  min-height: 2.075rem;
+  opacity: 0;
+  transform: translateY(-0.3rem);
+  transition:
+    opacity var(--duration-load) var(--ease-out),
+    transform var(--duration-load) var(--ease-out);
+}
+
+.process.is-ready .process__bar {
+  opacity: 1;
+  transform: none;
+}
+
+.process__kicker {
+  grid-column: 8 / span 5;
+  justify-self: end;
+  margin: 0;
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  line-height: 1;
+  color: var(--color-graphite);
+  text-align: right;
+  white-space: nowrap;
+}
+
+.process__stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--process-cols), minmax(0, 1fr));
+  min-height: 0;
+  margin-top: clamp(1.5rem, 3.5vh, 2.75rem);
+  margin-bottom: clamp(1.1rem, 2.2vh, 1.75rem);
+}
+
+/* Left-bleed main photo — mirror of Hero’s right-bleed geometry */
+.process__main {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  right: var(--process-photo-end);
+  width: calc(
+    100% * (var(--process-cols) - var(--process-photo-col)) /
+      var(--process-cols) + var(--margin-inline) +
+      (100vw - min(100vw, var(--max-width))) / 2
+  );
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0;
+  opacity: 0;
+  transition: opacity var(--duration-load) var(--ease-out) 120ms;
+}
+
+.process.is-ready .process__main {
+  opacity: 1;
+}
+
+.process__main img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+  border-radius: 0;
+}
+
+.process__copy {
+  position: relative;
+  z-index: 2;
+  grid-column: 7 / span 6;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(1.25rem, 2.2vh, 1.75rem);
+  padding-bottom: clamp(1.5rem, 4vh, 3rem);
+  text-align: right;
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition:
+    opacity var(--duration-load) var(--ease-out) 70ms,
+    transform var(--duration-load) var(--ease-out) 70ms;
+}
+
+.process.is-ready .process__copy {
+  opacity: 1;
+  transform: none;
+}
+
+.process__title {
+  margin: 0;
+  max-width: 100%;
+  font-family: var(--font-display);
+  font-size: var(--fs-h1);
+  font-weight: 500;
+  line-height: var(--lh-h1);
+  letter-spacing: -0.015em;
+  color: var(--color-graphite);
+}
+
+.process__title > span {
+  display: block;
+  white-space: nowrap;
+}
+
+.process__title > span + span {
+  margin-top: 0.04em;
+}
+
+.process__shape {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-olive);
+}
+
+.process__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.85rem;
+  max-width: 26.5rem;
+  width: 100%;
+}
+
+.process__desc {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-desc);
+  font-weight: 500;
+  line-height: var(--lh-desc);
+  color: var(--color-graphite);
+}
+
+.process__aside-rule {
+  width: 100%;
+  height: 0;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid rgb(41 43 39 / 0.55);
+}
+
+.process__meta-line {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--fs-meta-line);
+  font-weight: 500;
+  line-height: 1.55;
+  letter-spacing: var(--tracking-mono);
+  text-transform: uppercase;
+  color: var(--color-graphite);
+}
+
+.process__foot {
+  /* Height reserve only — never transform (would steal abspos containing block) */
+  min-height: var(--detail-w);
+  pointer-events: none;
+}
+
+/* Materials square: full-bleed right + bottom (mirror of Hero detail).
+   Sibling of foot so entrance opacity never retargets the containing block. */
+.process__detail {
+  position: absolute;
+  right: calc(-1 * var(--side-gap));
+  bottom: 0;
+  z-index: 2;
+  width: var(--detail-w);
+  aspect-ratio: 1 / 1;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 0;
+  opacity: 0;
+  transition: opacity var(--duration-load) var(--ease-out) 180ms;
+}
+
+.process.is-ready .process__detail {
+  opacity: 1;
+}
+
+.process__detail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 0;
+}
+
+/* Mirror of Hero project label — left of the materials square */
+.process__caption {
+  position: absolute;
+  right: calc(var(--margin-inline) + 2 * var(--col));
+  bottom: var(--shell-pad-block);
+  z-index: 2;
+  margin: 0;
+  padding: 0;
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--color-graphite);
+  line-height: 1;
+  white-space: nowrap;
+  text-align: right;
+  opacity: 0;
+  transition: opacity var(--duration-load) var(--ease-out) 180ms;
+}
+
+.process.is-ready .process__caption {
+  opacity: 1;
+}
+
+@media (max-width: 1280px) {
+  .process__title {
+    font-size: clamp(3.15rem, 4.8vw, 4.5rem);
+  }
+
+  .process__copy {
+    gap: 1.15rem;
+  }
+
+  .process__aside {
+    max-width: 24rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process__bar,
+  .process__copy,
+  .process__main,
+  .process__detail,
+  .process__caption {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
