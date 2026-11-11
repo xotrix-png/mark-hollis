@@ -62,12 +62,6 @@ export default function Materials() {
       className={ready ? 'materials is-ready' : 'materials'}
       aria-label="Material and Details"
     >
-      <div className="materials__rules" aria-hidden="true">
-        {Array.from({ length: 13 }, (_, i) => (
-          <span key={i} className="materials__rule" style={{ ['--i']: i }} />
-        ))}
-      </div>
-
       <div className="materials__shell">
         <header className="materials__bar">
           <p className="materials__kicker">06 / Material &amp; Details</p>

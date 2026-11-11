@@ -49,12 +49,6 @@ export default function Contact() {
       className={ready ? 'contact is-ready' : 'contact'}
       aria-label="Contact"
     >
-      <div className="contact__rules" aria-hidden="true">
-        {Array.from({ length: 13 }, (_, i) => (
-          <span key={i} className="contact__rule" style={{ ['--i']: i }} />
-        ))}
-      </div>
-
       <div className="contact__shell">
         <header className="contact__bar">
           <p className="contact__kicker">07 / Contact</p>

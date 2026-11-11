@@ -15,12 +15,6 @@ export default function Process() {
       className={ready ? 'process is-ready' : 'process'}
       aria-label="From Idea to Place"
     >
-      <div className="process__rules" aria-hidden="true">
-        {Array.from({ length: 13 }, (_, i) => (
-          <span key={i} className="process__rule" style={{ ['--i']: i }} />
-        ))}
-      </div>
-
       <div className="process__shell">
         <header className="process__bar">
           <p className="process__kicker">05 / From Idea to Place</p>

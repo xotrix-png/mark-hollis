@@ -12,32 +12,9 @@
   isolation: isolate;
   min-height: 100vh;
   min-height: 100dvh;
-  background-color: var(--color-ivory);
+  background-color: transparent;
   color: var(--color-graphite);
   overflow: clip;
-}
-
-.materials__rules {
-  position: absolute;
-  inset-block: 0;
-  left: 50%;
-  z-index: 0;
-  width: min(100%, var(--max-width));
-  transform: translateX(-50%);
-  pointer-events: none;
-}
-
-.materials__rule {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: calc(
-    var(--margin-inline) +
-      (100% - 2 * var(--margin-inline)) * var(--i) / var(--mat-cols)
-  );
-  width: 1px;
-  margin-left: -0.5px;
-  background-color: var(--rule-color);
 }
 
 .materials__shell {

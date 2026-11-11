@@ -1,3 +1,4 @@
+import SiteGrid from './components/SiteGrid.jsx'
 import Hero from './sections/Hero.jsx'
 import Philosophy from './sections/Philosophy.jsx'
 import About from './sections/About.jsx'
@@ -8,7 +9,8 @@ import Contact from './sections/Contact.jsx'
 
 export default function App() {
   return (
-    <main>
+    <main className="site">
+      <SiteGrid />
       <Hero />
       <Philosophy />
       {/* Selected Work (#work) not built yet — About → Materials → Contact follow Philosophy */}

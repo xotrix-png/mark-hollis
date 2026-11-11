@@ -15,12 +15,6 @@ export default function Philosophy() {
       className={ready ? 'philosophy is-ready' : 'philosophy'}
       aria-label="Philosophy"
     >
-      <div className="philosophy__rules" aria-hidden="true">
-        {Array.from({ length: 13 }, (_, i) => (
-          <span key={i} className="philosophy__rule" style={{ ['--i']: i }} />
-        ))}
-      </div>
-
       <div className="philosophy__shell">
         <header className="philosophy__bar">
           <p className="philosophy__kicker">02 / Philosophy</p>

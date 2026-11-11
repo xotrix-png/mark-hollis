@@ -23,10 +23,50 @@ body {
 }
 
 /* Shared rhythm between Hero → … → Contact (internal section layout untouched) */
-main {
+main.site {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: var(--section-gap);
+  background-color: var(--color-ivory);
+}
+
+/*
+  Site-level 12-col rules: absolute to main so they span section gaps.
+  Sections stay transparent so lines show through; content/photos paint above.
+*/
+.site-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.site-grid__frame {
+  position: absolute;
+  inset-block: 0;
+  left: 50%;
+  width: min(100%, var(--max-width));
+  transform: translateX(-50%);
+}
+
+.site-grid__rule {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(
+    var(--margin-inline) +
+      (100% - 2 * var(--margin-inline)) * var(--i) / var(--grid-columns)
+  );
+  width: 1px;
+  margin-left: -0.5px;
+  background-color: var(--rule-color);
+}
+
+main.site > section {
+  position: relative;
+  z-index: 1;
+  background-color: transparent;
 }
 
 img {

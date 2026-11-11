@@ -15,12 +15,6 @@ export default function About() {
       className={ready ? 'about is-ready' : 'about'}
       aria-label="About"
     >
-      <div className="about__rules" aria-hidden="true">
-        {Array.from({ length: 13 }, (_, i) => (
-          <span key={i} className="about__rule" style={{ ['--i']: i }} />
-        ))}
-      </div>
-
       <div className="about__shell">
         <header className="about__bar">
           <p className="about__kicker">03 / About</p>

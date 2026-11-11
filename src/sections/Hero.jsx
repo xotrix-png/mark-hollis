@@ -32,12 +32,6 @@ export default function Hero() {
       className={ready ? 'hero is-ready' : 'hero'}
       aria-label="Introduction"
     >
-      <div className="hero__rules" aria-hidden="true">
-        {Array.from({ length: 13 }, (_, i) => (
-          <span key={i} className="hero__rule" style={{ ['--i']: i }} />
-        ))}
-      </div>
-
       <div className="hero__shell">
         <HeroNav />
 

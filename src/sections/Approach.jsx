@@ -77,12 +77,6 @@ export default function Approach() {
       className={ready ? 'approach is-ready' : 'approach'}
       aria-label="Approach"
     >
-      <div className="approach__rules" aria-hidden="true">
-        {Array.from({ length: 13 }, (_, i) => (
-          <span key={i} className="approach__rule" style={{ ['--i']: i }} />
-        ))}
-      </div>
-
       <div className="approach__shell">
         <header className="approach__bar">
           <p className="approach__kicker">04 / Approach</p>
