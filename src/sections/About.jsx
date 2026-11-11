@@ -31,9 +31,12 @@ export default function About() {
 
             <div className="about__aside">
               <p className="about__desc">
-                Every garden begins with listening — to the land, the light and
-                the people who will live with it The result is a place that
-                feels inevitable, as if it had always been there
+                Every garden begins with listening — to the land,
+                <br />
+                the light and the people who will live with it The result
+                <br />
+                is a place that feels inevitable, as if it had always
+                been&nbsp;there
               </p>
               <hr className="about__rule-line" />
               <p className="about__meta-line">
