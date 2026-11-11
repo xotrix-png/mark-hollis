@@ -138,6 +138,16 @@ export default function Approach() {
                     <span className="approach__num">{step.num}</span>
                     <h3 className="approach__name">{step.name}</h3>
                   </button>
+                  <figure className="approach__stage-shot">
+                    <img
+                      src={step.image}
+                      alt={step.alt}
+                      width={step.width}
+                      height={step.height}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
                 </li>
               )
             })}

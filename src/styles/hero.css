@@ -8,8 +8,9 @@
 
   position: relative;
   isolation: isolate;
-  min-height: 100vh;
-  min-height: 100dvh;
+  /* Nav lives in App above Hero — keep first screen ~one viewport */
+  min-height: calc(100vh - 4.35rem);
+  min-height: calc(100dvh - 4.35rem);
   background-color: transparent;
   color: var(--color-graphite);
   overflow: clip;
@@ -19,29 +20,28 @@
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-rows: minmax(0, 1fr) auto;
   width: min(100%, var(--max-width));
   min-height: inherit;
   margin-inline: auto;
   padding-inline: var(--margin-inline);
-  padding-block: var(--shell-pad-block);
+  padding-top: 0;
+  padding-bottom: var(--shell-pad-block);
 }
 
-/* ——— Top bar ——— */
+/* ——— Top bar (lives in App; desktop shell aligns with Hero) ——— */
 .hero-nav {
+  position: relative;
+  z-index: 5;
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   align-items: start;
-  opacity: 0;
-  transform: translateY(-0.3rem);
-  transition:
-    opacity var(--duration-load) var(--ease-out),
-    transform var(--duration-load) var(--ease-out);
-}
-
-.hero.is-ready .hero-nav {
-  opacity: 1;
-  transform: none;
+  width: min(100%, var(--max-width));
+  margin-inline: auto;
+  padding-inline: var(--margin-inline);
+  padding-top: var(--shell-pad-block);
+  padding-bottom: 0;
+  background-color: transparent;
 }
 
 .hero-nav__brand-block {
@@ -70,7 +70,7 @@
 }
 
 .hero-nav__links {
-  grid-column: 8 / span 3;
+  grid-column: 7 / span 4;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -80,6 +80,12 @@
   font-weight: 500;
   letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
+}
+
+.hero-nav__link-item {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.28rem;
 }
 
 .hero-nav__links a {
@@ -92,6 +98,13 @@
 
 .hero-nav__links span {
   color: rgb(41 43 39 / 0.4);
+}
+
+/* Mobile-only chrome — hidden on desktop (≥1280) */
+.hero-nav__coords,
+.hero-nav__burger,
+.hero-nav__panel {
+  display: none;
 }
 
 .hero-nav__cta {
@@ -376,7 +389,7 @@
 
 @media (max-width: 1440px) {
   .hero-nav__links {
-    grid-column: 7 / span 3;
+    grid-column: 6 / span 4;
   }
 
   .hero-nav__cta {
@@ -399,7 +412,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-nav,
   .hero__copy,
   .hero__main,
   .hero__detail,
