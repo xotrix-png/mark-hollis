@@ -84,8 +84,8 @@ export default function Materials() {
 
               <div className="materials__aside">
                 <p className="materials__desc">
-                  Few materials, used honestly. Stone, timber, gravel and
-                  plants, chosen to age well and to belong to the place.
+                  Few materials, used honestly Stone, timber, gravel and
+                  plants, chosen to age well and to belong to the place
                 </p>
                 <hr className="materials__aside-rule" />
                 <p className="materials__meta-line">Stone · Timber · Gravel</p>
@@ -107,7 +107,7 @@ export default function Materials() {
                 <div className="materials__frame">
                   <img
                     src={shot.src}
-                    alt={`${shot.num} — ${shot.name}. ${shot.alt}`}
+                    alt={`${shot.num} — ${shot.name} — ${shot.alt}`}
                     width={shot.width}
                     height={shot.height}
                     loading="lazy"

@@ -2,7 +2,7 @@ import { useEffect, useEffectEvent, useRef, useState } from 'react'
 import '../styles/approach.css'
 
 const INTRO =
-  'Four quiet steps, from the first walk on site to the day the garden takes root.'
+  'Four quiet steps, from the first walk on site to the day the garden takes root'
 
 const STAGES = [
   {
@@ -86,7 +86,7 @@ export default function Approach() {
           <h2 className="approach__title">
             <span>From land</span>
             <span>
-              to <em className="approach__landscape">landscape.</em>
+              to <em className="approach__landscape">landscape</em>
             </span>
           </h2>
 

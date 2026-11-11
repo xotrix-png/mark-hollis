@@ -25,15 +25,15 @@ export default function About() {
             <h2 className="about__title">
               <span>Designing with</span>
               <span>
-                <em className="about__intention">intention.</em>
+                <em className="about__intention">intention</em>
               </span>
             </h2>
 
             <div className="about__aside">
               <p className="about__desc">
                 Every garden begins with listening — to the land, the light and
-                the people who will live with it. The result is a place that
-                feels inevitable, as if it had always been there.
+                the people who will live with it The result is a place that
+                feels inevitable, as if it had always been there
               </p>
               <hr className="about__rule-line" />
               <p className="about__meta-line">

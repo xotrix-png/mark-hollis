@@ -41,15 +41,15 @@ export default function Philosophy() {
             <h2 className="philosophy__title">
               <span>A landscape is</span>
               <span className="philosophy__title-line2">
-                more than a <em className="philosophy__garden">garden.</em>
+                more than a <em className="philosophy__garden">garden</em>
               </span>
             </h2>
 
             <div className="philosophy__aside">
               <p className="philosophy__desc">
-                It is the way light moves across stone. The silence between
-                trees. The weight of shade at noon. The feeling of arriving
-                somewhere you want to stay.
+                It is the way light moves across stone The silence between
+                trees The weight of shade at noon The feeling of arriving
+                somewhere you want to stay
               </p>
               <hr className="philosophy__rule-line" />
               <p className="philosophy__meta-line">
