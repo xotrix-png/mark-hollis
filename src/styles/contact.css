@@ -9,8 +9,9 @@
 
   position: relative;
   isolation: isolate;
+  /* svh not dvh — avoid resize jump when browser chrome toggles on scroll */
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 100svh;
   background-color: transparent;
   color: var(--color-graphite);
   overflow: clip;
@@ -323,6 +324,12 @@
 
   .contact__value {
     font-size: clamp(0.98rem, 1.2vw, 1.12rem);
+  }
+}
+
+@media (max-width: 1279px) {
+  .contact {
+    min-height: 0;
   }
 }
 
