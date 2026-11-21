@@ -18,8 +18,9 @@
 
   position: relative;
   isolation: isolate;
+  /* svh not dvh — avoid resize jump when browser chrome toggles on scroll */
   min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 100svh;
   background-color: transparent;
   color: var(--color-graphite);
   overflow: clip;
@@ -267,6 +268,12 @@
 
   .process__aside {
     max-width: 24rem;
+  }
+}
+
+@media (max-width: 1279px) {
+  .process {
+    min-height: 0;
   }
 }
 

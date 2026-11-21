@@ -8,9 +8,11 @@
 
   position: relative;
   isolation: isolate;
-  /* Nav lives in App above Hero — keep first screen ~one viewport */
+  /* Nav lives in App above Hero — keep first screen ~one viewport.
+     Use svh (stable), not dvh: dynamic vh resizes when tablet/mobile
+     browser chrome shows/hides on scroll and makes the hero image jump. */
   min-height: calc(100vh - 4.35rem);
-  min-height: calc(100dvh - 4.35rem);
+  min-height: calc(100svh - 4.35rem);
   background-color: transparent;
   color: var(--color-graphite);
   overflow: clip;
@@ -408,6 +410,14 @@
 
   .hero__aside {
     max-width: 24rem;
+  }
+}
+
+/* Compact: hug content. Keep this in hero.css (loaded after responsive.css)
+   so a leftover 100svh floor cannot win and reintroduce scroll chrome jump. */
+@media (max-width: 1279px) {
+  .hero {
+    min-height: 0;
   }
 }
 

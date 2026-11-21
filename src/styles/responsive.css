@@ -183,8 +183,8 @@
     left: 0;
     z-index: 300;
     width: 100vw;
-    height: 100dvh;
     height: 100vh;
+    height: 100svh;
     margin: 0;
     background-color: var(--color-ivory);
     opacity: 0;
