@@ -55,15 +55,6 @@ main.site > #contact {
   margin-top: var(--gap-materials-contact);
 }
 
-/* Zero-height nav target — does not affect section gap rhythm */
-.site-anchor {
-  height: 0;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  scroll-margin-top: var(--shell-pad-block);
-}
-
 /*
   Site-level 12-col rules: absolute to main so they span section gaps.
   Sections stay transparent so lines show through; content/photos paint above.

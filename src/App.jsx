@@ -15,8 +15,6 @@ export default function App() {
       <HeroNav />
       <Hero />
       <Philosophy />
-      {/* Selected Work not built yet — zero-height target so nav Work (#work) resolves */}
-      <div id="work" className="site-anchor" tabIndex={-1} />
       <About />
       <Approach />
       <Process />
